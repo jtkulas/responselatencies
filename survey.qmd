@@ -1,0 +1,116 @@
+---
+echo: false
+warning: false
+---
+
+```{r}
+## Creating a "second attempt" latency survey using the 11 Study 1 categories (although some categories will be "grouped"): Linear, hooked, non-mono, hooked(n), Linear(n)
+
+library(surveydown)
+```
+
+::: {#welcome .sd-page}
+
+# Welcome to our survey!
+
+We want you to rate **how desirable** is it to be for someone to be, in our culture,
+
++ extremely high (top 1% of all people)... 
++ above average (top 30% of all people)...
++ neutral (e.g., completely average)... 
++ below average (bottom 30% of all people)..., and
++ extremely low (bottom 1% of all people)...  
+
+...on a number of different characteristics.
+
+Below we provide some examples of how we would like you to think and respond to “how valued” a person would be viewed by our culture, if they were deemed top 1%, top 30%, average, bottom 30% or bottom 1% for different characteristics:
+
+## **TOP 1%:**
+
+This means that very, very few people are “higher” than the person along the characteristic. 
+
+![](top1.PNG)
+
+## **TOP 30%:**
+
+This means that about a third of people are “higher” than the person along the characteristic. 
+
+![](top30.PNG)
+
+## **AVERAGE:**
+
+This means that the person is perfectly “in the middle” along the characteristic (50% of people have “more” of the characteristic and 50% have “less). 
+
+![](average.PNG)
+
+## **BOTTOM 30%:**
+
+This means that about a third of people are “lower” than the person along the characteristic. 
+
+![](bottom30.PNG)
+
+## **BOTTOM 1%:**
+
+This means that very, very few people are “lower” than the person along the characteristic. 
+
+![](bottom1.PNG)
+
+We will be recording *how long it takes for you to respond*, so please respond as quickly but accurately as possible. The next few pages will be *practice* exercises to let you become familiar with the rating procedure -- we will let you know when the practice ends and the actual data collection begins. 
+
+```{r}
+sd_next("Sample Items")
+```
+
+:::
+
+::: {#page2 .sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+**I worry about things**
+
+
+```{r}
+questions <- c("Hi", "Hello", "Hola", "Aloha")
+
+sd_question(
+  type  = 'mc',
+  id    = 'penguins',
+  label = sample(questions,1),
+  option = c(
+    'Adélie'    = 'adelie',
+    'Chinstrap' = 'chinstrap',
+    'Gentoo'    = 'gentoo'
+  )
+)
+
+sd_question(
+  type  = 'mc',
+  id    = 'try',
+  label = "Please let us know your thoughts regarding the *difficulty* of this task",
+  option = c(
+    'K&T much more difficult than Edwards'    = 'ktmuch',
+    'K&T somewhat more difficult than Edwards' = 'ktsomewhat',
+    'Gentoo'    = 'gentoo'
+  )
+)
+
+sd_next(next_page = 'end')
+```
+
+
+
+
+:::
+
+::: {#end .sd-page}
+
+## Thank you!!
+
+Your responses have been recorded -- you can close this window now.
+
+```{r}
+sd_close("Exit Survey")
+```
+
+:::
