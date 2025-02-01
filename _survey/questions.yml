@@ -1,0 +1,17 @@
+# ! JUST READ - don't change the content of this file
+# Question structure extracted from survey.html
+penguins:
+  type: mc
+  label: Hi
+  options:
+    Adélie: adelie
+    Chinstrap: chinstrap
+    Gentoo: gentoo
+try:
+  type: mc
+  label: Please let us know your thoughts regarding the difficulty of this task
+  options:
+    K&T much more difficult than Edwards: ktmuch
+    K&T somewhat more difficult than Edwards: ktsomewhat
+    Gentoo: gentoo
+
