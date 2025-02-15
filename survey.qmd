@@ -58,12 +58,54 @@ This means that very, very few people are “lower” than the person along the 
 We will be recording *how long it takes for you to respond*, so please respond as quickly but accurately as possible. The next few pages will be *practice* exercises to let you become familiar with the rating procedure -- we will let you know when the practice ends and the actual data collection begins. 
 
 ```{r}
-sd_next("Sample Items")
+sd_next("practice")
 ```
 
 :::
 
-::: {#page2 .sd-page}
+::: {#practice .sd-page}
+
+The task we're asking you to do is unfamiliar to most people. Therefore, before we begin with the **actual** experiment, you will have the chance to *practice* with two items -- you will have an opportunity to ask the experimenter questions as you respond to the practice questions. 
+
+The first item that you will be asked to provide ratings for is: 
+
+**I worry about things**
+
+Please hit the `"Next"` button when you are ready to begin the practice session.
+
+```{r}
+sd_next()
+```
+
+::: 
+
+::: {#practice1 .sd-page}
+
+
+**I worry about things**
+```{r}
+
+sd_question(
+  type  = 'mc',
+  id    = 'practice1_1',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  )
+)
+
+sd_next(next_page = 'Actual1')
+
+```
+
+::: 
+
+
+::: {#Actual1 .sd-page}
 
 The item that you will be asked to provide ratings for is: 
 
