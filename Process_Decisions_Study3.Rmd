@@ -1,0 +1,19 @@
+---
+title: "Process Decisions"
+output: html_document
+date: "Updated: `r format(Sys.time(), '%B %d, %Y')`"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+##### This document displays response latency study 3 decisions.
+
+### 2/1/25. 
+1) Wanted to move forward collecting more data at St. Thomas, specifically response latencies, for both Edwards and Kuncel methods.
+2) Decided to take the 11 categories to randomly sample from. After discussion, it was decided to condense categories for a few: (G1) S shape and Linear, (G2) Z shape and Linear (N), (G3) positive hooks (minus opposite hook), and (G4) negative hooks are grouped into. Uncategorized will not be used, and all others are in their own category. Note that the file is set up so that the grouped categories can be dismantled if needed.
+
+### 2/15/25. 
+1) Using CSS to switch up the interface so that the cursor is in the middle and the answer options make a circle around the cursor equadistant. 
+2) We are *not* going to randomize, or make a condition, the kuncel method's trait concentration (extremely high to extremely low).
