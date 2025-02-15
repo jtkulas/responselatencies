@@ -7,6 +7,70 @@ warning: false
 ## Creating a "second attempt" latency survey using the 11 Study 1 categories (although some categories will be "grouped"): Linear, hooked, non-mono, hooked(n), Linear(n)
 
 library(surveydown)
+
+
+##surveydown objects
+
+##grab raw data numbers and key numbers from new categorization
+##remove i and _ numbers from the raw data
+##put key categorization as unlist tall data - will need to do the same for the other data
+##join them on number, then put back into a wide dataset and create objects for each of the categories 
+
+#install.packages("reshape2")
+library(reshape2)
+library(dplyr)
+
+#grabbing item number and text
+items <- read.csv("300itemstems.csv")
+
+##grabbing categorizations
+cat <- read.csv("KuncelTellegen Q Sort Items - Sheet1.csv")
+
+##renaming categorizations
+names <- c("Plinear", "PEhook", "PMhook", "PS", "Ohook", "X", "witch", "uncat", "flat", "X1", "Nhook", "Nzshape", "NEhook", "Nlinear")
+colnames(cat) <- names
+
+rm(names)
+
+##create 2 column dataset
+test <- melt(cat)
+
+##remove X columns
+test <- test[,3:4]
+
+##remove NAs in column value
+test <- as.data.frame(na.omit(test))
+
+##rename value to Itemnum
+colnames(test) <- c("category","Itemnum")
+
+##join values on Itemnum from items and value from cat
+Merged <- merge(x = items, y = test, by = "Itemnum", all = TRUE)
+
+rm(cat,test,items)
+
+##Create objects based on items
+PosLinear <- Merged %>%
+  filter(category == "Plinear" | category == "PS")
+
+PosHook <- Merged %>%
+  filter(category == "PEhook" | category == "PMhook")
+
+OPhook <- Merged %>%
+  filter(category == "Ohook")
+
+Witch <- Merged %>%
+  filter(category == "witch")
+
+Flat <- Merged %>%
+  filter(category == "flat")
+
+NegLinear <- Merged %>%
+  filter(category == "Nlinear" | category == "Nzshape")
+
+NegHook <- Merged %>%
+  filter(category == "NEhook" | category == "Nhook")
+
 ```
 
 ::: {#welcome .sd-page}
