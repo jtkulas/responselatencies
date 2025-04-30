@@ -133,7 +133,7 @@ The task we're asking you to do is unfamiliar to most people. Therefore, before 
 
 The first item that you will be asked to provide ratings for is: 
 
-**I worry about things**
+**USE UNCATEGORIZABLE ITEM?**
 
 Please hit the `"Next"` button when you are ready to begin the practice session.
 
@@ -145,13 +145,14 @@ sd_next()
 
 ::: {#practice1 .sd-page}
 
+The item that you will be asked to provide ratings for is: 
+**USE UNCATEGORIZABLE ITEM?**
 
-**I worry about things**
+
 ```{r}
-
 sd_question(
   type  = 'mc',
-  id    = 'practice1_1',
+  id    = 'prac1_EH',
   label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
   option = c(
     'Very Undesirable'    = '1',
@@ -159,50 +160,1661 @@ sd_question(
     'Neutral'           = '3',
     'Desirable'         = '4',
     'Very Desirable'    = '5'
-  )
-)
+  ))
 
-sd_next(next_page = 'Actual1')
+sd_next(next_page = 'end')
+```
 
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+
+```
+
+
+::: 
+
+::: {#practice2 .sd-page}
+
+The item that you will be asked to provide ratings for is: 
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+**USE UNCATEGORIZABLE ITEM?**
+
+
+```{r}
+sd_question(
+  type  = 'mc',
+  id    = 'prac1_EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+
+```
+
+
+
+
+::: 
+
+
+::: {#PositiveLinear1 .sd-page}
+
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+PSitem1 <- subset(slice_sample(PosLinear,n=1), select = "Text")
+PosLinear <- PosLinear %>% filter(Text != PSitem1$Text)
+```
+
+```{r}
+cat(paste(PSitem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(PSitem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
 ```
 
 ::: 
 
 
-::: {#Actual1 .sd-page}
+::: {#PositiveLinear2 .sd-page}
 
 The item that you will be asked to provide ratings for is: 
 
-**I worry about things**
-
+```{r}
+library(dplyr)
+PSitem2 <- subset(slice_sample(PosLinear,n=1), select = "Text")
+PosLinear <- PosLinear %>% filter(Text != PSitem2$Text)
+```
 
 ```{r}
-questions <- c("Hi", "Hello", "Hola", "Aloha")
+cat(paste(PSitem2$Text))
 
 sd_question(
   type  = 'mc',
-  id    = 'penguins',
-  label = sample(questions,1),
+  id    = 'poslinear_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
   option = c(
-    'Adélie'    = 'adelie',
-    'Chinstrap' = 'chinstrap',
-    'Gentoo'    = 'gentoo'
-  )
-)
-
-sd_question(
-  type  = 'mc',
-  id    = 'try',
-  label = "Please let us know your thoughts regarding the *difficulty* of this task",
-  option = c(
-    'K&T much more difficult than Edwards'    = 'ktmuch',
-    'K&T somewhat more difficult than Edwards' = 'ktsomewhat',
-    'Gentoo'    = 'gentoo'
-  )
-)
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
 
 sd_next(next_page = 'end')
 ```
+
+
+```{r}
+cat(paste(PSitem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PSitem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'poslinear_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+::: 
+
+
+::: {#Witch1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+Witem1 <- subset(slice_sample(Witch,n=1), select = "Text")
+Witch <- Witch %>% filter(Text != Witem1$Text)
+```
+
+```{r}
+cat(paste(Witem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(Witem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#Witch2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+Witem2 <- subset(slice_sample(Witch,n=1), select = "Text")
+Witch <- Witch %>% filter(Text != Witem2$Text)
+```
+
+```{r}
+cat(paste(Witem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(Witem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Witem2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'witch_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#OppositeHook1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+OPhook1 <- subset(slice_sample(OPhook,n=1), select = "Text")
+OPhook <- OPhook %>% filter(Text != OPhook1$Text)
+```
+
+```{r}
+cat(paste(OPhook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(OPhook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#OPhook2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+OPhook2 <- subset(slice_sample(OPhook,n=1), select = "Text")
+OPhook <- OPhook %>% filter(Text != OPhook2$Text)
+```
+
+```{r}
+cat(paste(OPhook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(OPhook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(OPhook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'OPhook_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {Neghook1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+NegHook1 <- subset(slice_sample(NegHook,n=1), select = "Text")
+NegHook <- NegHook %>% filter(Text != NegHook1$Text)
+```
+
+```{r}
+cat(paste(NegHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(NegHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#NegHook2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+NegHook2 <- subset(slice_sample(NegHook,n=1), select = "Text")
+NegHook <- NegHook %>% filter(Text != NegHook2$Text)
+```
+
+```{r}
+cat(paste(NegHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(NegHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegHook_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+::: 
+
+
+::: {#Flat1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+Flat1 <- subset(slice_sample(Flat,n=1), select = "Text")
+Flat <- Flat %>% filter(Text != Flat1$Text)
+```
+
+```{r}
+cat(paste(Flat1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(Flat1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#Flat2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+Flat2 <- subset(slice_sample(Flat,n=1), select = "Text")
+Flat <- Flat %>% filter(Text != Flat2$Text)
+```
+
+```{r}
+cat(paste(Flat2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(Flat2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(Flat2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'Flat_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+::: 
+
+
+::: {#NegLinear1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+NegLinear1 <- subset(slice_sample(NegLinear,n=1), select = "Text")
+NegLinear <- NegLinear %>% filter(Text != NegLinear1$Text)
+```
+
+```{r}
+cat(paste(NegLinear1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(NegLinear1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#NegLinear2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+NegLinear2 <- subset(slice_sample(NegLinear,n=1), select = "Text")
+NegLinear <- NegLinear %>% filter(Text != NegLinear2$Text)
+```
+
+```{r}
+cat(paste(NegLinear2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(NegLinear2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(NegLinear2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'NegLinear_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+::: 
+
+
+::: {#PosHook1.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+PosHook1 <- subset(slice_sample(PosHook,n=1), select = "Text")
+PosHook <- PosHook %>% filter(Text != PosHook1$Text)
+```
+
+```{r}
+cat(paste(PosHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_1EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(PosHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_1AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_1A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_1BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook1$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_1EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+::: 
+
+
+::: {#PosHook2.sd-page}
+
+The item that you will be asked to provide ratings for is: 
+
+```{r}
+library(dplyr)
+PosHook2 <- subset(slice_sample(PosHook,n=1), select = "Text")
+PosHook <- PosHook %>% filter(Text != PosHook2$Text)
+```
+
+```{r}
+cat(paste(PosHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_2EH',
+  label = "How desirable is it to be **Extremely High** in this characteristic? (top 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+```{r}
+cat(paste(PosHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_2AA',
+  label = "How desirable is it to be **Above Average** in this characteristic? (top 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_2A',
+  label = "How desirable is it to be **Average** in this characteristic?",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_2BA',
+  label = "How desirable is it to be **Below Average** in this characteristic? (bottom 30%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+```{r}
+cat(paste(PosHook2$Text))
+
+sd_question(
+  type  = 'mc',
+  id    = 'PosHook_2EL',
+  label = "How desirable is it to be **Extremely Low** in this characteristic? (bottom 1%)",
+  option = c(
+    'Very Undesirable'    = '1',
+    'Undesirable'       = '2',
+    'Neutral'           = '3',
+    'Desirable'         = '4',
+    'Very Desirable'    = '5'
+  ))
+
+sd_next(next_page = 'end')
+```
+
+
+
+
 
 
 

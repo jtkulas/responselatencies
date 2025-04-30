@@ -1,0 +1,26 @@
+# ! JUST READ - don't change the content of this file
+# Question structure extracted from survey.html
+practice1_1:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+penguins:
+  type: mc
+  label: Hola
+  options:
+    Adélie: adelie
+    Chinstrap: chinstrap
+    Gentoo: gentoo
+try:
+  type: mc
+  label: Please let us know your thoughts regarding the difficulty of this task
+  options:
+    K&T much more difficult than Edwards: ktmuch
+    K&T somewhat more difficult than Edwards: ktsomewhat
+    Gentoo: gentoo
+
