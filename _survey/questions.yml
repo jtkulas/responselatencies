@@ -1,6 +1,6 @@
 # ! JUST READ - don't change the content of this file
 # Question structure extracted from survey.html
-practice1_1:
+prac1_EH:
   type: mc
   label: How desirable is it to be Extremely High in this characteristic? (top 1%)
   options:
@@ -9,18 +9,670 @@ practice1_1:
     Neutral: '3'
     Desirable: '4'
     Very Desirable: '5'
-penguins:
+prac1_AA:
   type: mc
-  label: Hola
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
   options:
-    Adélie: adelie
-    Chinstrap: chinstrap
-    Gentoo: gentoo
-try:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+prac1_A:
   type: mc
-  label: Please let us know your thoughts regarding the difficulty of this task
+  label: How desirable is it to be Average in this characteristic?
   options:
-    K&T much more difficult than Edwards: ktmuch
-    K&T somewhat more difficult than Edwards: ktsomewhat
-    Gentoo: gentoo
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+prac1_BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+prac1_EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+poslinear_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+witch_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+OPhook_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegHook_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+Flat_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+NegLinear_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_1EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_1AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_1A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_1BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_1EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_2EH:
+  type: mc
+  label: How desirable is it to be Extremely High in this characteristic? (top 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_2AA:
+  type: mc
+  label: How desirable is it to be Above Average in this characteristic? (top 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_2A:
+  type: mc
+  label: How desirable is it to be Average in this characteristic?
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_2BA:
+  type: mc
+  label: How desirable is it to be Below Average in this characteristic? (bottom 30%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
+PosHook_2EL:
+  type: mc
+  label: How desirable is it to be Extremely Low in this characteristic? (bottom 1%)
+  options:
+    Very Undesirable: '1'
+    Undesirable: '2'
+    Neutral: '3'
+    Desirable: '4'
+    Very Desirable: '5'
 

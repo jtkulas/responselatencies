@@ -3656,7 +3656,7 @@ display: inline-block;
 .matrix-question .shiny-options-group .radio input {
 margin: 0;
 position: relative;
-top: 1rem; 
+top: 0.5rem; 
 }
 
 .matrix-question .shiny-options-group .radio span {
@@ -3667,6 +3667,17 @@ display: none;
 text-align: left;
 font-weight: normal;
 padding-left: 15px; 
+}
+
+.question-container[data-question-id] input[type="text"],
+.question-container[data-question-id] input[type="number"],
+.question-container[data-question-id] textarea,
+.question-container[data-question-id] select {
+border: 1px solid #ddd;
+}
+.question-container[data-question-id] input[type="radio"],
+.question-container[data-question-id] input[type="checkbox"] {
+border-color: #ddd;
 }
 
 div:where(.swal2-container) .swal2-popup {
@@ -3712,6 +3723,27 @@ font-weight: 800;
 
 
 
+<div class="cell">
+<style type="text/css">
+.lowercase {
+text-decoration: underline !important;
+}
+.shiny-input-radiogroup {
+display: flex;
+justify-content: space-between;
+width: 80%;
+margin: 20px auto;
+}
+input[type="radio"] {
+margin: 0 10px;
+}
+input[type="radio"]:checked + label {
+font-weight: bold;
+color: red; 
+}
+
+</style>
+</div>
 <div id="welcome" class="sd-page">
 <section id="welcome-to-our-survey" class="level1">
 <h1>Welcome to our survey!</h1>
@@ -3763,7 +3795,7 @@ font-weight: 800;
 <div id="practice" class="sd-page">
 <p>The task we’re asking you to do is unfamiliar to most people. Therefore, before we begin with the <strong>actual</strong> experiment, you will have the chance to <em>practice</em> with two items – you will have an opportunity to ask the experimenter questions as you respond to the practice questions.</p>
 <p>The first item that you will be asked to provide ratings for is:</p>
-<p><strong>I worry about things</strong></p>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
 <p>Please hit the <code>&quot;Next&quot;</code> button when you are ready to begin the practice session.</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -3774,41 +3806,49 @@ font-weight: 800;
 </div>
 </div>
 <div id="practice1" class="sd-page">
-<p><strong>I worry about things</strong></p>
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let neutralOption = document.querySelector('input[value="Neutral"]');
+    if (neutralOption) {
+      neutralOption.checked = true; // Pre-select Neutral
+    }
+  });
+</script>
+<p>The item that you will be asked to provide ratings for is: <strong>USE UNCATEGORIZABLE ITEM?</strong></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="container-practice1_1" data-question-id="practice1_1" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;practice1_1_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;practice1_1_interacted&#39;, true, {priority: &#39;event&#39;});">
-<div id="practice1_1" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="practice1_1-label">
-<label class="control-label" id="practice1_1-label" for="practice1_1"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+<div id="container-prac1_EH" data-question-id="prac1_EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_EH-label">
+<label class="control-label" id="prac1_EH-label" for="prac1_EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
 </label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
-<input type="radio" name="practice1_1" value="1">
+<input type="radio" name="prac1_EH" value="1">
 <span>Very Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="practice1_1" value="2">
+<input type="radio" name="prac1_EH" value="2">
 <span>Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="practice1_1" value="3">
+<input type="radio" name="prac1_EH" value="3">
 <span>Neutral</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="practice1_1" value="4">
+<input type="radio" name="prac1_EH" value="4">
 <span>Desirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="practice1_1" value="5">
+<input type="radio" name="prac1_EH" value="5">
 <span>Very Desirable</span>
 </label>
 </div>
@@ -3818,38 +3858,48 @@ font-weight: 800;
 </div>
 </div>
 <div class="cell-output-display">
-<div data-next-page="Actual1" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
 <button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
 </div>
 </div>
 </div>
-</div>
-<div id="Actual1" class="sd-page">
-<p>The item that you will be asked to provide ratings for is:</p>
-<p><strong>I worry about things</strong></p>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<p><u>testing</u></p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="container-penguins" data-question-id="penguins" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;penguins_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;penguins_interacted&#39;, true, {priority: &#39;event&#39;});">
-<div id="penguins" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="penguins-label">
-<label class="control-label" id="penguins-label" for="penguins"><p>Hola</p>
+<div id="container-prac1_AA" data-question-id="prac1_AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_AA-label">
+<label class="control-label" id="prac1_AA-label" for="prac1_AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
 </label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
-<input type="radio" name="penguins" value="adelie">
-<span>Adélie</span>
+<input type="radio" name="prac1_AA" value="1">
+<span>Very Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="penguins" value="chinstrap">
-<span>Chinstrap</span>
+<input type="radio" name="prac1_AA" value="2">
+<span>Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="penguins" value="gentoo">
-<span>Gentoo</span>
+<input type="radio" name="prac1_AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="5">
+<span>Very Desirable</span>
 </label>
 </div>
 </div>
@@ -3858,27 +3908,4004 @@ font-weight: 800;
 </div>
 </div>
 <div class="cell-output-display">
-<div id="container-try" data-question-id="try" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;try_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;try_interacted&#39;, true, {priority: &#39;event&#39;});">
-<div id="try" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="try-label">
-<label class="control-label" id="try-label" for="try"><p>Please let us know your thoughts regarding the <em>difficulty</em> of this task</p>
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_A" data-question-id="prac1_A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_A-label">
+<label class="control-label" id="prac1_A-label" for="prac1_A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
 </label>
 <div class="shiny-options-group">
 <div class="radio">
 <label>
-<input type="radio" name="try" value="ktmuch">
-<span>K&amp;T much more difficult than Edwards</span>
+<input type="radio" name="prac1_A" value="1">
+<span>Very Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="try" value="ktsomewhat">
-<span>K&amp;T somewhat more difficult than Edwards</span>
+<input type="radio" name="prac1_A" value="2">
+<span>Undesirable</span>
 </label>
 </div>
 <div class="radio">
 <label>
-<input type="radio" name="try" value="gentoo">
-<span>Gentoo</span>
+<input type="radio" name="prac1_A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_BA" data-question-id="prac1_BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_BA-label">
+<label class="control-label" id="prac1_BA-label" for="prac1_BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_EL" data-question-id="prac1_EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_EL-label">
+<label class="control-label" id="prac1_EL-label" for="prac1_EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="practice2" class="sd-page">
+<p>The item that you will be asked to provide ratings for is: <strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_EH" data-question-id="prac1_EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_EH-label">
+<label class="control-label" id="prac1_EH-label" for="prac1_EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_AA" data-question-id="prac1_AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_AA-label">
+<label class="control-label" id="prac1_AA-label" for="prac1_AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_A" data-question-id="prac1_A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_A-label">
+<label class="control-label" id="prac1_A-label" for="prac1_A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_BA" data-question-id="prac1_BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_BA-label">
+<label class="control-label" id="prac1_BA-label" for="prac1_BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<p><strong>USE UNCATEGORIZABLE ITEM?</strong></p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="container-prac1_EL" data-question-id="prac1_EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;prac1_EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;prac1_EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="prac1_EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="prac1_EL-label">
+<label class="control-label" id="prac1_EL-label" for="prac1_EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="prac1_EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="PositiveLinear1" class="sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Only feel comfortable with friends.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_1EH" data-question-id="poslinear_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_1EH-label">
+<label class="control-label" id="poslinear_1EH-label" for="poslinear_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Only feel comfortable with friends.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_1AA" data-question-id="poslinear_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_1AA-label">
+<label class="control-label" id="poslinear_1AA-label" for="poslinear_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Only feel comfortable with friends.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_1A" data-question-id="poslinear_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_1A-label">
+<label class="control-label" id="poslinear_1A-label" for="poslinear_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Only feel comfortable with friends.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_1BA" data-question-id="poslinear_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_1BA-label">
+<label class="control-label" id="poslinear_1BA-label" for="poslinear_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Only feel comfortable with friends.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_1EL" data-question-id="poslinear_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_1EL-label">
+<label class="control-label" id="poslinear_1EL-label" for="poslinear_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="PositiveLinear2" class="sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Feel that I&#39;m unable to deal with things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_2EH" data-question-id="poslinear_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_2EH-label">
+<label class="control-label" id="poslinear_2EH-label" for="poslinear_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Feel that I&#39;m unable to deal with things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_2AA" data-question-id="poslinear_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_2AA-label">
+<label class="control-label" id="poslinear_2AA-label" for="poslinear_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Feel that I&#39;m unable to deal with things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_2A" data-question-id="poslinear_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_2A-label">
+<label class="control-label" id="poslinear_2A-label" for="poslinear_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Feel that I&#39;m unable to deal with things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_2BA" data-question-id="poslinear_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_2BA-label">
+<label class="control-label" id="poslinear_2BA-label" for="poslinear_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Feel that I&#39;m unable to deal with things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-poslinear_2EL" data-question-id="poslinear_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="poslinear_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="poslinear_2EL-label">
+<label class="control-label" id="poslinear_2EL-label" for="poslinear_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="poslinear_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="Witch1.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Am calm even in tense situations.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_1EH" data-question-id="witch_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_1EH-label">
+<label class="control-label" id="witch_1EH-label" for="witch_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Am calm even in tense situations.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_1AA" data-question-id="witch_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_1AA-label">
+<label class="control-label" id="witch_1AA-label" for="witch_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Am calm even in tense situations.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_1A" data-question-id="witch_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_1A-label">
+<label class="control-label" id="witch_1A-label" for="witch_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Am calm even in tense situations.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_1BA" data-question-id="witch_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_1BA-label">
+<label class="control-label" id="witch_1BA-label" for="witch_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Am calm even in tense situations.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_1EL" data-question-id="witch_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_1EL-label">
+<label class="control-label" id="witch_1EL-label" for="witch_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="Witch2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Waste my time.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_2EH" data-question-id="witch_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_2EH-label">
+<label class="control-label" id="witch_2EH-label" for="witch_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Waste my time.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_2AA" data-question-id="witch_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_2AA-label">
+<label class="control-label" id="witch_2AA-label" for="witch_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Waste my time.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_2A" data-question-id="witch_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_2A-label">
+<label class="control-label" id="witch_2A-label" for="witch_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Waste my time.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_2BA" data-question-id="witch_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_2BA-label">
+<label class="control-label" id="witch_2BA-label" for="witch_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Waste my time.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-witch_2EL" data-question-id="witch_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;witch_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;witch_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="witch_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="witch_2EL-label">
+<label class="control-label" id="witch_2EL-label" for="witch_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="witch_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="OppositeHook1.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Don&#39;t see the consequences of things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_1EH" data-question-id="OPhook_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_1EH-label">
+<label class="control-label" id="OPhook_1EH-label" for="OPhook_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Don&#39;t see the consequences of things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_1AA" data-question-id="OPhook_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_1AA-label">
+<label class="control-label" id="OPhook_1AA-label" for="OPhook_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Don&#39;t see the consequences of things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_1A" data-question-id="OPhook_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_1A-label">
+<label class="control-label" id="OPhook_1A-label" for="OPhook_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Don&#39;t see the consequences of things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_1BA" data-question-id="OPhook_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_1BA-label">
+<label class="control-label" id="OPhook_1BA-label" for="OPhook_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Don&#39;t see the consequences of things.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_1EL" data-question-id="OPhook_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_1EL-label">
+<label class="control-label" id="OPhook_1EL-label" for="OPhook_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="OPhook2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep in the background.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_2EH" data-question-id="OPhook_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_2EH-label">
+<label class="control-label" id="OPhook_2EH-label" for="OPhook_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep in the background.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_2AA" data-question-id="OPhook_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_2AA-label">
+<label class="control-label" id="OPhook_2AA-label" for="OPhook_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep in the background.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_2A" data-question-id="OPhook_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_2A-label">
+<label class="control-label" id="OPhook_2A-label" for="OPhook_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep in the background.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_2BA" data-question-id="OPhook_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_2BA-label">
+<label class="control-label" id="OPhook_2BA-label" for="OPhook_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep in the background.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-OPhook_2EL" data-question-id="OPhook_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;OPhook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;OPhook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="OPhook_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="OPhook_2EL-label">
+<label class="control-label" id="OPhook_2EL-label" for="OPhook_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="OPhook_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div class="{Neghook1.sd-page}">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Try to follow the rules.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_1EH" data-question-id="NegHook_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_1EH-label">
+<label class="control-label" id="NegHook_1EH-label" for="NegHook_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Try to follow the rules.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_1AA" data-question-id="NegHook_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_1AA-label">
+<label class="control-label" id="NegHook_1AA-label" for="NegHook_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Try to follow the rules.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_1A" data-question-id="NegHook_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_1A-label">
+<label class="control-label" id="NegHook_1A-label" for="NegHook_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Try to follow the rules.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_1BA" data-question-id="NegHook_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_1BA-label">
+<label class="control-label" id="NegHook_1BA-label" for="NegHook_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Try to follow the rules.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_1EL" data-question-id="NegHook_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_1EL-label">
+<label class="control-label" id="NegHook_1EL-label" for="NegHook_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="NegHook2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Have a good word for everyone.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_2EH" data-question-id="NegHook_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_2EH-label">
+<label class="control-label" id="NegHook_2EH-label" for="NegHook_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Have a good word for everyone.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_2AA" data-question-id="NegHook_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_2AA-label">
+<label class="control-label" id="NegHook_2AA-label" for="NegHook_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Have a good word for everyone.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_2A" data-question-id="NegHook_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_2A-label">
+<label class="control-label" id="NegHook_2A-label" for="NegHook_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Have a good word for everyone.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_2BA" data-question-id="NegHook_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_2BA-label">
+<label class="control-label" id="NegHook_2BA-label" for="NegHook_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Have a good word for everyone.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegHook_2EL" data-question-id="NegHook_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegHook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegHook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegHook_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegHook_2EL-label">
+<label class="control-label" id="NegHook_2EL-label" for="NegHook_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegHook_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="Flat1.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Love surprise parties.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_1EH" data-question-id="Flat_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_1EH-label">
+<label class="control-label" id="Flat_1EH-label" for="Flat_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Love surprise parties.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_1AA" data-question-id="Flat_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_1AA-label">
+<label class="control-label" id="Flat_1AA-label" for="Flat_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Love surprise parties.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_1A" data-question-id="Flat_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_1A-label">
+<label class="control-label" id="Flat_1A-label" for="Flat_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Love surprise parties.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_1BA" data-question-id="Flat_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_1BA-label">
+<label class="control-label" id="Flat_1BA-label" for="Flat_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Love surprise parties.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_1EL" data-question-id="Flat_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_1EL-label">
+<label class="control-label" id="Flat_1EL-label" for="Flat_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="Flat2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Do things I later regret.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_2EH" data-question-id="Flat_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_2EH-label">
+<label class="control-label" id="Flat_2EH-label" for="Flat_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Do things I later regret.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_2AA" data-question-id="Flat_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_2AA-label">
+<label class="control-label" id="Flat_2AA-label" for="Flat_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Do things I later regret.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_2A" data-question-id="Flat_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_2A-label">
+<label class="control-label" id="Flat_2A-label" for="Flat_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Do things I later regret.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_2BA" data-question-id="Flat_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_2BA-label">
+<label class="control-label" id="Flat_2BA-label" for="Flat_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Do things I later regret.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-Flat_2EL" data-question-id="Flat_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;Flat_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;Flat_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="Flat_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="Flat_2EL-label">
+<label class="control-label" id="Flat_2EL-label" for="Flat_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="Flat_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="NegLinear1.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Plunge into tasks with all my heart.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_1EH" data-question-id="NegLinear_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_1EH-label">
+<label class="control-label" id="NegLinear_1EH-label" for="NegLinear_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Plunge into tasks with all my heart.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_1AA" data-question-id="NegLinear_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_1AA-label">
+<label class="control-label" id="NegLinear_1AA-label" for="NegLinear_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Plunge into tasks with all my heart.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_1A" data-question-id="NegLinear_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_1A-label">
+<label class="control-label" id="NegLinear_1A-label" for="NegLinear_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Plunge into tasks with all my heart.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_1BA" data-question-id="NegLinear_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_1BA-label">
+<label class="control-label" id="NegLinear_1BA-label" for="NegLinear_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Plunge into tasks with all my heart.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_1EL" data-question-id="NegLinear_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_1EL-label">
+<label class="control-label" id="NegLinear_1EL-label" for="NegLinear_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="NegLinear2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Work hard.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_2EH" data-question-id="NegLinear_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_2EH-label">
+<label class="control-label" id="NegLinear_2EH-label" for="NegLinear_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Work hard.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_2AA" data-question-id="NegLinear_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_2AA-label">
+<label class="control-label" id="NegLinear_2AA-label" for="NegLinear_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Work hard.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_2A" data-question-id="NegLinear_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_2A-label">
+<label class="control-label" id="NegLinear_2A-label" for="NegLinear_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Work hard.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_2BA" data-question-id="NegLinear_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_2BA-label">
+<label class="control-label" id="NegLinear_2BA-label" for="NegLinear_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Work hard.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-NegLinear_2EL" data-question-id="NegLinear_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;NegLinear_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;NegLinear_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="NegLinear_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="NegLinear_2EL-label">
+<label class="control-label" id="NegLinear_2EL-label" for="NegLinear_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="NegLinear_2EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="PosHook1.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Make myself the center of attention.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_1EH" data-question-id="PosHook_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_1EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_1EH-label">
+<label class="control-label" id="PosHook_1EH-label" for="PosHook_1EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Make myself the center of attention.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_1AA" data-question-id="PosHook_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_1AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_1AA-label">
+<label class="control-label" id="PosHook_1AA-label" for="PosHook_1AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Make myself the center of attention.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_1A" data-question-id="PosHook_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_1A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_1A-label">
+<label class="control-label" id="PosHook_1A-label" for="PosHook_1A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Make myself the center of attention.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_1BA" data-question-id="PosHook_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_1BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_1BA-label">
+<label class="control-label" id="PosHook_1BA-label" for="PosHook_1BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Make myself the center of attention.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_1EL" data-question-id="PosHook_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_1EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_1EL-label">
+<label class="control-label" id="PosHook_1EL-label" for="PosHook_1EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_1EL" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+</div>
+<div id="PosHook2.sd-page">
+<p>The item that you will be asked to provide ratings for is:</p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep others at a distance.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_2EH" data-question-id="PosHook_2EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_2EH_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_2EH" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_2EH-label">
+<label class="control-label" id="PosHook_2EH-label" for="PosHook_2EH"><p>How desirable is it to be <strong>Extremely High</strong> in this characteristic? (top 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EH" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EH" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EH" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EH" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EH" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep others at a distance.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_2AA" data-question-id="PosHook_2AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_2AA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_2AA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_2AA-label">
+<label class="control-label" id="PosHook_2AA-label" for="PosHook_2AA"><p>How desirable is it to be <strong>Above Average</strong> in this characteristic? (top 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2AA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2AA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2AA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2AA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2AA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep others at a distance.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_2A" data-question-id="PosHook_2A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_2A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_2A_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_2A" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_2A-label">
+<label class="control-label" id="PosHook_2A-label" for="PosHook_2A"><p>How desirable is it to be <strong>Average</strong> in this characteristic?</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2A" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2A" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2A" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2A" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2A" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep others at a distance.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_2BA" data-question-id="PosHook_2BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_2BA_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_2BA" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_2BA-label">
+<label class="control-label" id="PosHook_2BA-label" for="PosHook_2BA"><p>How desirable is it to be <strong>Below Average</strong> in this characteristic? (bottom 30%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2BA" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2BA" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2BA" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2BA" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2BA" value="5">
+<span>Very Desirable</span>
+</label>
+</div>
+</div>
+</div>
+<span class="hidden-asterisk">*</span>
+</div>
+</div>
+<div class="cell-output-display">
+<div data-next-page="end" style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
+<button class="btn btn-default action-button sd-enter-button" id="page_id_next" onclick="Shiny.setInputValue(&#39;next_page&#39;, this.parentElement.getAttribute(&#39;data-next-page&#39;));" style="display: block; margin: auto;" type="button">Next</button>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>Keep others at a distance.</code></pre>
+</div>
+<div class="cell-output-display">
+<div id="container-PosHook_2EL" data-question-id="PosHook_2EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;PosHook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;PosHook_2EL_interacted&#39;, true, {priority: &#39;event&#39;});">
+<div id="PosHook_2EL" class="form-group shiny-input-radiogroup shiny-input-container" role="radiogroup" aria-labelledby="PosHook_2EL-label">
+<label class="control-label" id="PosHook_2EL-label" for="PosHook_2EL"><p>How desirable is it to be <strong>Extremely Low</strong> in this characteristic? (bottom 1%)</p>
+</label>
+<div class="shiny-options-group">
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EL" value="1">
+<span>Very Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EL" value="2">
+<span>Undesirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EL" value="3">
+<span>Neutral</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EL" value="4">
+<span>Desirable</span>
+</label>
+</div>
+<div class="radio">
+<label>
+<input type="radio" name="PosHook_2EL" value="5">
+<span>Very Desirable</span>
 </label>
 </div>
 </div>

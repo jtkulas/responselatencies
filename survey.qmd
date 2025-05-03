@@ -3,6 +3,30 @@ echo: false
 warning: false
 ---
 
+```{css}
+
+.lowercase {
+  text-decoration: underline !important;
+}
+
+.shiny-input-radiogroup {
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
+  margin: 20px auto;
+}
+input[type="radio"] {
+  margin: 0 10px;
+}
+input[type="radio"]:checked + label {
+  font-weight: bold;
+  color: red; /* Highlight selected option */
+}
+
+/*cell-output-display shiny-options-group*/
+
+```
+
 ```{r}
 ## Creating a "second attempt" latency survey using the 11 Study 1 categories (although some categories will be "grouped"): Linear, hooked, non-mono, hooked(n), Linear(n)
 
@@ -145,11 +169,22 @@ sd_next()
 
 ::: {#practice1 .sd-page}
 
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    let neutralOption = document.querySelector('input[value="Neutral"]');
+    if (neutralOption) {
+      neutralOption.checked = true; // Pre-select Neutral
+    }
+  });
+</script>
+
 The item that you will be asked to provide ratings for is: 
 **USE UNCATEGORIZABLE ITEM?**
 
 
 ```{r}
+# https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
+
 sd_question(
   type  = 'mc',
   id    = 'prac1_EH',
@@ -167,6 +202,7 @@ sd_next(next_page = 'end')
 
 **USE UNCATEGORIZABLE ITEM?**
 
+[testing]{.underline}
 
 ```{r}
 sd_question(
