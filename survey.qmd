@@ -157,7 +157,7 @@ The task we're asking you to do is unfamiliar to most people. Therefore, before 
 
 The first item that you will be asked to provide ratings for is: 
 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 Please hit the `"Next"` button when you are ready to begin the practice session.
 
@@ -179,7 +179,7 @@ sd_next()
 </script>
 
 The item that you will be asked to provide ratings for is: 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 
 ```{r}
@@ -200,7 +200,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 [testing]{.underline}
 
@@ -220,7 +220,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 
 ```{r}
@@ -239,7 +239,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 
 ```{r}
@@ -258,7 +258,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Readily overcome setbacks.**
 
 
 ```{r}
@@ -284,7 +284,7 @@ sd_next(next_page = 'end')
 ::: {#practice2 .sd-page}
 
 The item that you will be asked to provide ratings for is: 
-**USE UNCATEGORIZABLE ITEM?**
+**Postpone decisions.**
 
 
 ```{r}
@@ -303,7 +303,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Postpone decisions.**
 
 
 ```{r}
@@ -322,7 +322,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Postpone decisions.**
 
 
 ```{r}
@@ -341,7 +341,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Postpone decisions.**
 
 
 ```{r}
@@ -360,7 +360,7 @@ sd_question(
 sd_next(next_page = 'end')
 ```
 
-**USE UNCATEGORIZABLE ITEM?**
+**Postpone decisions.**
 
 
 ```{r}
