@@ -1,6 +1,7 @@
 ---
 echo: false
 warning: false
+theme: [night, weekly.scss]
 ---
 
 ```{r}
@@ -156,7 +157,7 @@ The task we're asking you to do is unfamiliar to most people. Therefore, before 
 
 The first item that you will be asked to provide ratings for is: 
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 Please hit the `"Next"` button when you are ready to begin the practice session.
 
@@ -177,7 +178,7 @@ sd_next()
   });
 </script>
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 ```{r}
 # https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
@@ -197,7 +198,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -207,7 +208,7 @@ sd_next()
 
 ::: {#practice1a .sd-page}
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 ```{r}
 sd_question(
@@ -226,7 +227,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -235,7 +236,7 @@ sd_next()
 
 ::: {#practice1b .sd-page}
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 ```{r}
 sd_question(
@@ -254,7 +255,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -264,7 +265,7 @@ sd_next()
 
 ::: {#practice1c .sd-page}
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 ```{r}
 sd_question(
@@ -283,7 +284,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -293,7 +294,7 @@ sd_next()
 
 ::: {#practice1d .sd-page}
 
-**Readily overcome setbacks.**
+## **Readily overcome setbacks.**
 
 ```{r}
 sd_question(
@@ -312,7 +313,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -324,7 +325,7 @@ sd_next()
 
 The SECOND PRACTICE item that you will be asked to provide ratings for is:  
 
-**Postpone decisions.**
+## **Postpone decisions.**
 
 ```{r}
 sd_question(
@@ -341,7 +342,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -351,7 +352,7 @@ sd_next()
 
 ::: {#practice2a .sd-page}
 
-**Postpone decisions.**
+## **Postpone decisions.**
 
 ```{r}
 sd_question(
@@ -368,7 +369,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -378,7 +379,7 @@ sd_next()
 
 ::: {#practice2b .sd-page}
 
-**Postpone decisions.**
+## **Postpone decisions.**
 
 ```{r}
 sd_question(
@@ -396,7 +397,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -406,7 +407,7 @@ sd_next()
 
 ::: {#practice2c .sd-page}
 
-**Postpone decisions.**
+## **Postpone decisions.**
 
 ```{r}
 sd_question(
@@ -424,7 +425,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -434,7 +435,7 @@ sd_next()
 
 ::: {#practice2d .sd-page}
 
-**Postpone decisions.**
+## **Postpone decisions.**
 
 ```{r}
 sd_question(
@@ -452,7 +453,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -474,9 +475,9 @@ PosLinear <- PosLinear %>% filter(Text != PSitem1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -486,7 +487,7 @@ sd_next()
 
 ::: {#PositiveLinear1a .sd-page}
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
 ```{r}
 ## cat(paste(PSitem1$Text))
@@ -505,7 +506,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -515,7 +516,7 @@ sd_next()
 
 ::: {#PositiveLinear1b .sd-page}
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
 ```{r}
 ## cat(paste(PSitem1$Text))
@@ -534,7 +535,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -544,7 +545,7 @@ sd_next()
 
 ::: {#PositiveLinear1c .sd-page}
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
 ```{r}
 ## cat(paste(PSitem1$Text))
@@ -563,7 +564,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -573,7 +574,7 @@ sd_next()
 
 ::: {#PositiveLinear1d .sd-page}
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
 ```{r}
 ## cat(paste(PSitem1$Text))
@@ -592,7 +593,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -602,7 +603,7 @@ sd_next()
 
 ::: {#PositiveLinear1e .sd-page}
 
-**`r PSitem1$Text`**
+## **`r PSitem1$Text`**
 
 ```{r}
 ## cat(paste(PSitem1$Text))
@@ -621,7 +622,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -644,9 +645,9 @@ PosLinear <- PosLinear %>% filter(Text != PSitem2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -657,7 +658,7 @@ sd_next()
 
 ::: {#PositiveLinear2a .sd-page}
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
 ```{r}
 
@@ -675,7 +676,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -685,7 +686,7 @@ sd_next()
 
 ::: {#PositiveLinear2b .sd-page}
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
 ```{r}
 
@@ -703,7 +704,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -713,7 +714,7 @@ sd_next()
 
 ::: {#PositiveLinear2c .sd-page}
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
 ```{r}
 
@@ -731,7 +732,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -741,7 +742,7 @@ sd_next()
 
 ::: {#PositiveLinear2d .sd-page}
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
 ```{r}
 
@@ -759,7 +760,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -769,7 +770,7 @@ sd_next()
 
 ::: {#PositiveLinear2e .sd-page}
 
-**`r PSitem2$Text`**
+## **`r PSitem2$Text`**
 
 ```{r}
 
@@ -787,7 +788,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -808,9 +809,9 @@ Witch <- Witch %>% filter(Text != Witem1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -820,7 +821,7 @@ sd_next()
 
 ::: {#Witch1a .sd-page}
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
 ```{r}
 
@@ -838,7 +839,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -848,7 +849,7 @@ sd_next()
 
 ::: {#Witch1b .sd-page}
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
 ```{r}
 
@@ -866,7 +867,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -876,7 +877,7 @@ sd_next()
 
 ::: {#Witch1c .sd-page}
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
 ```{r}
 
@@ -894,7 +895,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -904,7 +905,7 @@ sd_next()
 
 ::: {#Witch1d .sd-page}
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
 ```{r}
 
@@ -922,7 +923,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -932,7 +933,7 @@ sd_next()
 
 ::: {#Witch1e .sd-page}
 
-**`r Witem1$Text`**
+## **`r Witem1$Text`**
 
 ```{r}
 ## cat(paste(Witem1$Text))
@@ -951,7 +952,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -973,9 +974,9 @@ Witch <- Witch %>% filter(Text != Witem2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -986,7 +987,7 @@ sd_next()
 
 ::: {#Witch2a .sd-page}
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
 ```{r}
 ## cat(paste(Witem2$Text))
@@ -1005,7 +1006,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1015,7 +1016,7 @@ sd_next()
 
 ::: {#Witch2b .sd-page}
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
 ```{r}
 ## cat(paste(Witem2$Text))
@@ -1034,7 +1035,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1044,7 +1045,7 @@ sd_next()
 
 ::: {#Witch2c .sd-page}
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
 ```{r}
 ## cat(paste(Witem2$Text))
@@ -1063,7 +1064,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1073,7 +1074,7 @@ sd_next()
 
 ::: {#Witch2d .sd-page}
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
 ```{r}
 ## cat(paste(Witem2$Text))
@@ -1092,7 +1093,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1102,7 +1103,7 @@ sd_next()
 
 ::: {#Witch2e .sd-page}
 
-**`r Witem2$Text`**
+## **`r Witem2$Text`**
 
 ```{r}
 ## cat(paste(Witem2$Text))
@@ -1121,7 +1122,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1143,9 +1144,9 @@ OPhook <- OPhook %>% filter(Text != OPhook1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1155,7 +1156,7 @@ sd_next()
 
 ::: {#OppositeHook1a .sd-page}
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
 ```{r}
 ## cat(paste(OPhook1$Text))
@@ -1174,7 +1175,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1184,7 +1185,7 @@ sd_next()
 
 ::: {#OppositeHook1b .sd-page}
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
 ```{r}
 ## cat(paste(OPhook1$Text))
@@ -1203,7 +1204,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1213,7 +1214,7 @@ sd_next()
 
 ::: {#OppositeHook1c .sd-page}
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
 ```{r}
 ## cat(paste(OPhook1$Text))
@@ -1232,7 +1233,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1242,7 +1243,7 @@ sd_next()
 
 ::: {#OppositeHook1d .sd-page}
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
 ```{r}
 ## cat(paste(OPhook1$Text))
@@ -1261,7 +1262,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1271,7 +1272,7 @@ sd_next()
 
 ::: {#OppositeHook1e .sd-page}
 
-**`r OPhook1$Text`**
+## **`r OPhook1$Text`**
 
 ```{r}
 ## cat(paste(OPhook1$Text))
@@ -1290,7 +1291,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1312,9 +1313,9 @@ OPhook <- OPhook %>% filter(Text != OPhook2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1324,7 +1325,7 @@ sd_next()
 
 ::: {#OPhook2a .sd-page}
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
 ```{r}
 ## cat(paste(OPhook2$Text))
@@ -1343,7 +1344,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1353,7 +1354,7 @@ sd_next()
 
 ::: {#OPhook2b .sd-page}
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
 ```{r}
 ## cat(paste(OPhook2$Text))
@@ -1372,7 +1373,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1382,7 +1383,7 @@ sd_next()
 
 ::: {#OPhook2c .sd-page}
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
 ```{r}
 ## cat(paste(OPhook2$Text))
@@ -1401,7 +1402,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1411,7 +1412,7 @@ sd_next()
 
 ::: {#OPhook2d .sd-page}
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
 ```{r}
 ## cat(paste(OPhook2$Text))
@@ -1430,7 +1431,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1440,7 +1441,7 @@ sd_next()
 
 ::: {#OPhook2e .sd-page}
 
-**`r OPhook2$Text`**
+## **`r OPhook2$Text`**
 
 ```{r}
 ## cat(paste(OPhook2$Text))
@@ -1459,7 +1460,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1481,9 +1482,9 @@ NegHook <- NegHook %>% filter(Text != NegHook1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1493,7 +1494,7 @@ sd_next()
 
 ::: {#Neghook1a .sd-page}
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
 ```{r}
 ## cat(paste(NegHook1$Text))
@@ -1512,7 +1513,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1522,7 +1523,7 @@ sd_next()
 
 ::: {#Neghook1b .sd-page}
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
 ```{r}
 ## cat(paste(NegHook1$Text))
@@ -1541,7 +1542,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1551,7 +1552,7 @@ sd_next()
 
 ::: {#Neghook1c .sd-page}
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
 ```{r}
 ## cat(paste(NegHook1$Text))
@@ -1570,7 +1571,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1580,7 +1581,7 @@ sd_next()
 
 ::: {#Neghook1d .sd-page}
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
 ```{r}
 ## cat(paste(NegHook1$Text))
@@ -1599,7 +1600,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1609,7 +1610,7 @@ sd_next()
 
 ::: {#Neghook1e .sd-page}
 
-**`r NegHook1$Text`**
+## **`r NegHook1$Text`**
 
 ```{r}
 ## cat(paste(NegHook1$Text))
@@ -1628,7 +1629,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1650,9 +1651,9 @@ NegHook <- NegHook %>% filter(Text != NegHook2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1662,7 +1663,7 @@ sd_next()
 
 ::: {#NegHook2a .sd-page}
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
 ```{r}
 ## cat(paste(NegHook2$Text))
@@ -1681,7 +1682,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1691,7 +1692,7 @@ sd_next()
 
 ::: {#NegHook2b .sd-page}
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
 ```{r}
 ## cat(paste(NegHook2$Text))
@@ -1710,7 +1711,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1720,7 +1721,7 @@ sd_next()
 
 ::: {#NegHook2c .sd-page}
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
 ```{r}
 ## cat(paste(NegHook2$Text))
@@ -1739,7 +1740,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1749,7 +1750,7 @@ sd_next()
 
 ::: {#NegHook2d .sd-page}
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
 ```{r}
 ## cat(paste(NegHook2$Text))
@@ -1768,7 +1769,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1778,7 +1779,7 @@ sd_next()
 
 ::: {#NegHook2e .sd-page}
 
-**`r NegHook2$Text`**
+## **`r NegHook2$Text`**
 
 ```{r}
 ## cat(paste(NegHook2$Text))
@@ -1797,7 +1798,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1818,9 +1819,9 @@ Flat <- Flat %>% filter(Text != Flat1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1830,7 +1831,7 @@ sd_next()
 
 ::: {#Flat1a .sd-page}
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
 ```{r}
 ## cat(paste(Flat1$Text))
@@ -1849,7 +1850,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1859,7 +1860,7 @@ sd_next()
 
 ::: {#Flat1b .sd-page}
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
 ```{r}
 ## cat(paste(Flat1$Text))
@@ -1878,7 +1879,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1888,7 +1889,7 @@ sd_next()
 
 ::: {#Flat1c .sd-page}
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
 ```{r}
 ## cat(paste(Flat1$Text))
@@ -1907,7 +1908,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1917,7 +1918,7 @@ sd_next()
 
 ::: {#Flat1d .sd-page}
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
 ```{r}
 ## cat(paste(Flat1$Text))
@@ -1936,7 +1937,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1946,7 +1947,7 @@ sd_next()
 
 ::: {#Flat1e .sd-page}
 
-**`r Flat1$Text`**
+## **`r Flat1$Text`**
 
 ```{r}
 ## cat(paste(Flat1$Text))
@@ -1965,7 +1966,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1987,9 +1988,9 @@ Flat <- Flat %>% filter(Text != Flat2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -1999,7 +2000,7 @@ sd_next()
 
 ::: {#Flat2a .sd-page}
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
 ```{r}
 ## cat(paste(Flat2$Text))
@@ -2018,7 +2019,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2028,7 +2029,7 @@ sd_next()
 
 ::: {#Flat2b .sd-page}
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
 ```{r}
 ## cat(paste(Flat2$Text))
@@ -2047,7 +2048,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2057,7 +2058,7 @@ sd_next()
 
 ::: {#Flat2c .sd-page}
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
 ```{r}
 ## cat(paste(Flat2$Text))
@@ -2076,7 +2077,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2086,7 +2087,7 @@ sd_next()
 
 ::: {#Flat2d .sd-page}
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
 ```{r}
 ## cat(paste(Flat2$Text))
@@ -2105,7 +2106,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2115,7 +2116,7 @@ sd_next()
 
 ::: {#Flat2e .sd-page}
 
-**`r Flat2$Text`**
+## **`r Flat2$Text`**
 
 ```{r}
 ## cat(paste(Flat2$Text))
@@ -2134,7 +2135,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2155,9 +2156,9 @@ NegLinear <- NegLinear %>% filter(Text != NegLinear1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2167,7 +2168,7 @@ sd_next()
 
 ::: {#NegLinear1a .sd-page}
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
 ```{r}
 ## cat(paste(NegLinear1$Text))
@@ -2186,7 +2187,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2196,7 +2197,7 @@ sd_next()
 
 ::: {#NegLinear1b .sd-page}
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
 ```{r}
 ## cat(paste(NegLinear1$Text))
@@ -2215,7 +2216,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2225,7 +2226,7 @@ sd_next()
 
 ::: {#NegLinear1c .sd-page}
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
 ```{r}
 ## cat(paste(NegLinear1$Text))
@@ -2244,7 +2245,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2254,7 +2255,7 @@ sd_next()
 
 ::: {#NegLinear1d .sd-page}
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
 ```{r}
 ## cat(paste(NegLinear1$Text))
@@ -2273,7 +2274,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2283,7 +2284,7 @@ sd_next()
 
 ::: {#NegLinear1e .sd-page}
 
-**`r NegLinear1$Text`**
+## **`r NegLinear1$Text`**
 
 ```{r}
 ## cat(paste(NegLinear1$Text))
@@ -2302,7 +2303,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2324,9 +2325,9 @@ NegLinear <- NegLinear %>% filter(Text != NegLinear2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2337,7 +2338,7 @@ sd_next()
 
 ::: {#NegLinear2a .sd-page}
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
 ```{r}
 ## cat(paste(NegLinear2$Text))
@@ -2356,7 +2357,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2366,7 +2367,7 @@ sd_next()
 
 ::: {#NegLinear2b .sd-page}
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
 ```{r}
 ## cat(paste(NegLinear2$Text))
@@ -2385,7 +2386,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2395,7 +2396,7 @@ sd_next()
 
 ::: {#NegLinear2c .sd-page}
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
 ```{r}
 ## cat(paste(NegLinear2$Text))
@@ -2414,7 +2415,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2424,7 +2425,7 @@ sd_next()
 
 ::: {#NegLinear2d .sd-page}
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
 ```{r}
 ## cat(paste(NegLinear2$Text))
@@ -2443,7 +2444,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2453,7 +2454,7 @@ sd_next()
 
 ::: {#NegLinear2e .sd-page}
 
-**`r NegLinear2$Text`**
+## **`r NegLinear2$Text`**
 
 ```{r}
 ## cat(paste(NegLinear2$Text))
@@ -2472,7 +2473,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2493,9 +2494,9 @@ PosHook <- PosHook %>% filter(Text != PosHook1$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2506,7 +2507,7 @@ sd_next()
 
 ::: {#PosHook1a .sd-page}
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
 ```{r}
 ## cat(paste(PosHook1$Text))
@@ -2525,7 +2526,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2535,7 +2536,7 @@ sd_next()
 
 ::: {#PosHook1b .sd-page}
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
 ```{r}
 ## cat(paste(PosHook1$Text))
@@ -2554,7 +2555,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2564,7 +2565,7 @@ sd_next()
 
 ::: {#PosHook1c .sd-page}
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
 ```{r}
 ## cat(paste(PosHook1$Text))
@@ -2583,7 +2584,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2593,7 +2594,7 @@ sd_next()
 
 ::: {#PosHook1d .sd-page}
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
 ```{r}
 ## cat(paste(PosHook1$Text))
@@ -2612,7 +2613,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2622,7 +2623,7 @@ sd_next()
 
 ::: {#PosHook1e .sd-page}
 
-**`r PosHook1$Text`**
+## **`r PosHook1$Text`**
 
 ```{r}
 ## cat(paste(PosHook1$Text))
@@ -2641,7 +2642,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2663,9 +2664,9 @@ PosHook <- PosHook %>% filter(Text != PosHook2$Text)
 
 The item that you will be asked to provide ratings for is: 
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2676,7 +2677,7 @@ sd_next()
 
 ::: {#PosHook2a .sd-page}
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
 ```{r}
 ## cat(paste(PosHook2$Text))
@@ -2695,7 +2696,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2705,7 +2706,7 @@ sd_next()
 
 ::: {#PosHook2b .sd-page}
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
 ```{r}
 ## cat(paste(PosHook2$Text))
@@ -2724,7 +2725,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2734,7 +2735,7 @@ sd_next()
 
 ::: {#PosHook2c .sd-page}
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
 ```{r}
 ## cat(paste(PosHook2$Text))
@@ -2753,7 +2754,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2763,7 +2764,7 @@ sd_next()
 
 ::: {#PosHook2d .sd-page}
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
 ```{r}
 ## cat(paste(PosHook2$Text))
@@ -2782,7 +2783,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()
@@ -2792,7 +2793,7 @@ sd_next()
 
 ::: {#PosHook2e .sd-page}
 
-**`r PosHook2$Text`**
+## **`r PosHook2$Text`**
 
 ```{r}
 ## cat(paste(PosHook2$Text))
@@ -2811,7 +2812,7 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`
+When ready for the next rating, please hit `Next`:
 
 ```{r}
 sd_next()

@@ -1,0 +1,12 @@
+name: responselatencies
+title: responselatencies
+username: jtkulas
+account: jtkulas
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14799304
+bundleId: 10318478
+url: https://jtkulas.shinyapps.io/responselatencies/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

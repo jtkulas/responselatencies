@@ -1,0 +1,64 @@
+
+/*-- scss:defaults --*/
+
+/*-- scss:rules --*/
+
+.slides {
+  overflow-y: auto;  /*-- supposedly helps with content overflow --*/
+}
+
+.center h2 {
+  text-align: center;
+  font-size: 1.5em;
+}
+
+
+/*-- transformations --*/
+
+.mirror {
+  transform: rotateY(180deg);
+}
+
+.ninety {
+  transform: rotateY(90deg);
+}
+
+.tilt {
+  rotate: 20deg;
+}
+
+.tilt2 {
+  rotate: -20deg;
+}
+
+.tilt15 {
+  rotate: 15deg;
+}
+
+.tilt3 {
+  rotate: 3deg;
+}
+
+.smaller {
+  font-size: .8em;
+}
+
+.bigger {
+  font-size: 1.5em;
+}
+
+.Larger {
+  font-size: 2em;
+}
+
+.thicker {
+  font-weight: bold;
+}
+
+.lowercase {
+  text-transform: lowercase !important; 
+}
+
+.middle {
+  text-align: center;
+}

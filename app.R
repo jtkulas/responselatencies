@@ -11,15 +11,7 @@ library(surveydown)
 # database table. See the documentation for details:
 # https://surveydown.org/store-data
 
-db <- sd_database(
-  host   = "",
-  dbname = "",
-  port   = "",
-  user   = "",
-  table  = "",
-  ignore = TRUE
-)
-
+db <- sd_db_connect(ignore=FALSE)
 
 # Server setup
 server <- function(input, output, session) {
