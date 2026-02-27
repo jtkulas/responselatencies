@@ -101,7 +101,27 @@ NegHook <- Merged %>%
 
 # Welcome to our survey!
 
-We want you to rate **how desirable** is it to be for someone to be, in our culture,
+You will be asked to rate how desirable the content of 15 personality items is using [two different rating procedures]{.underline}. 
+
+We do NOT want you to provide ratings of your own personality -- rather, we are interested in your opinion regarding the extent to which each item **should be considered [desirable]{.underline} within the context of our American society**. 
+
+The extent to which personality items reflect desirable content has been of interest to personality researchers for many years. Currently, researchers collect this type of information using two different procedures, and we are curious to know if the procedures yield similar or dissimilar results. 
+
+So, you will be rating a set of 15 items [twice]{.underline} -- once using the traditional procedure and once using a “newer” rating procedure. Because these type of ratings are a bit unusual, we will also present some opportunities for practice.
+
+Once we begin, your response time is recorded as well as your actual opinion regarding desirability, so please answer as *quickly but accurately* as possible!
+
+Please hit the `Next` button when you are ready for the instructions for the first rating method.
+
+```{r}
+sd_next() ## either #kuncel or #edwards here - need to randomize
+```
+
+:::
+
+::: {#kuncel .sd-page}
+
+For this half of the survey, we want you to rate **how desirable** is it to be for someone to be, in our culture,
 
 + extremely high (**top 1%** of all people)... 
 + above average (**top 30%** of all people)...
@@ -145,29 +165,36 @@ This means that very, very few people are “lower” than the person along the 
 
 We will be recording *how long it takes for you to respond*, so please respond as quickly but accurately as possible. The next few pages will be *practice* exercises to let you become familiar with the rating procedure -- we will let you know when the practice ends and the actual data collection begins. 
 
+Please hit the `Next` button when you are ready for your first practice item.
+
 ```{r}
-sd_next("practice")
+sd_next("kunpractice")
 ```
 
 :::
 
-::: {#practice .sd-page}
+::: {#kunpractice .sd-page}
 
-The task we're asking you to do is unfamiliar to most people. Therefore, before we begin with the **actual** experiment, you will have the chance to *practice* with two items -- you will have an opportunity to ask the experimenter questions as you respond to the practice questions. 
+The task we're asking you to do is unfamiliar to most people. Therefore, before we begin with the **actual** experiment, you will have the chance to *practice* with two items -- you also have the opportunity on these 2 items to ask the experimenter questions if you have them. 
+
+<br>
+<br>
 
 The first item that you will be asked to provide ratings for is: 
 
 ## **Readily overcome setbacks.**
 
-Please hit the `"Next"` button when you are ready to begin the practice session.
+Please hit the `Next` button when you are ready to begin the practice session.
 
 ```{r}
-sd_next()
+
+sd_next("kunpractice1")
+
 ```
 
 ::: 
 
-::: {#practice1 .sd-page}
+::: {#kunpractice1 .sd-page}
 
 <script>
   document.addEventListener("DOMContentLoaded", function() {
@@ -206,7 +233,7 @@ sd_next()
 
 :::
 
-::: {#practice1a .sd-page}
+::: {#kunpractice1a .sd-page}
 
 ## **Readily overcome setbacks.**
 
@@ -234,7 +261,7 @@ sd_next()
 ```
 :::
 
-::: {#practice1b .sd-page}
+::: {#kunpractice1b .sd-page}
 
 ## **Readily overcome setbacks.**
 
@@ -263,7 +290,7 @@ sd_next()
 
 :::
 
-::: {#practice1c .sd-page}
+::: {#kunpractice1c .sd-page}
 
 ## **Readily overcome setbacks.**
 
@@ -292,7 +319,7 @@ sd_next()
 
 :::
 
-::: {#practice1d .sd-page}
+::: {#kunpractice1d .sd-page}
 
 ## **Readily overcome setbacks.**
 
@@ -321,9 +348,21 @@ sd_next()
 
 ::: 
 
-::: {#practice2 .sd-page}
+::: {#kunpractice2item .sd-page}
 
 The SECOND PRACTICE item that you will be asked to provide ratings for is:  
+
+## **Postpone decisions.**
+
+When ready, please hit the `Next` button and you will begin the next sequence of ratings. 
+
+```{r}
+sd_next()
+```
+
+:::
+
+::: {#kunpractice2 .sd-page}
 
 ## **Postpone decisions.**
 
@@ -350,7 +389,7 @@ sd_next()
 
 ::: 
 
-::: {#practice2a .sd-page}
+::: {#kunpractice2a .sd-page}
 
 ## **Postpone decisions.**
 
@@ -377,7 +416,7 @@ sd_next()
 
 :::
 
-::: {#practice2b .sd-page}
+::: {#kunpractice2b .sd-page}
 
 ## **Postpone decisions.**
 
@@ -405,7 +444,7 @@ sd_next()
 
 :::
 
-::: {#practice2c .sd-page}
+::: {#kunpractice2c .sd-page}
 
 ## **Postpone decisions.**
 
@@ -433,7 +472,7 @@ sd_next()
 
 :::
 
-::: {#practice2d .sd-page}
+::: {#kunpractice2d .sd-page}
 
 ## **Postpone decisions.**
 
@@ -453,7 +492,22 @@ sd_question(
 
 ```
 
-When ready for the next rating, please hit `Next`:
+After completing the rating, please hit `Next`:
+
+```{r}
+sd_next()
+```
+
+:::
+
+
+::: {#kunpracticeend .sd-page}
+
+![](https://media2.giphy.com/media/v1.Y2lkPTc5MGI3NjExd3djMmZ1aG13N3U4Z2xmcmxrenp5cXRiMnFnZWg5ZmFqM2RyYXVwOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/7k8bHrnz5wYVo54VbU/giphy.gif){fig-align="center" width="60%"}
+
+So, that's the procedure. 
+
+If you have any questions please ask the experimenter now, otherwise if you feel that you understand how to make accurate ratings, please hit the `Next` button and you will provide desirability ratings for 15 statements. 
 
 ```{r}
 sd_next()
@@ -796,7 +850,7 @@ sd_next()
 
 :::
 
-::: 
+
 
 
 ::: {#Witch1 .sd-page}
@@ -961,7 +1015,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#Witch2 .sd-page}
@@ -1131,7 +1184,7 @@ sd_next()
 :::
 
 
-::: 
+
 
 
 ::: {#OppositeHook1 .sd-page}
@@ -1300,7 +1353,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#OPhook2 .sd-page}
@@ -1469,7 +1521,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#Neghook1 .sd-page}
@@ -1638,7 +1689,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#NegHook2 .sd-page}
@@ -1806,7 +1856,6 @@ sd_next()
 
 :::
 
-::: 
 
 
 ::: {#Flat1 .sd-page}
@@ -1975,7 +2024,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#Flat2 .sd-page}
@@ -2143,7 +2191,7 @@ sd_next()
 
 :::
 
-::: 
+ 
 
 
 ::: {#NegLinear1 .sd-page}
@@ -2312,7 +2360,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#NegLinear2 .sd-page}
@@ -2481,7 +2528,6 @@ sd_next()
 
 :::
 
-::: 
 
 
 ::: {#PosHook1 .sd-page}
@@ -2651,7 +2697,6 @@ sd_next()
 :::
 
 
-::: 
 
 
 ::: {#PosHook2 .sd-page}
