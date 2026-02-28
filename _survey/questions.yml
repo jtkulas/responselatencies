@@ -1500,4 +1500,452 @@ PosHook_2EL_:
     Neutral: '3'
     Desirable: '4'
     Very Desirable: '5'
+edprac1_EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edprac1_EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edprac2_EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edprac2_EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edposlinear_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edposlinear_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edposlinear_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edposlinear_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edwitch_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edwitch_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edwitch_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edwitch_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edOPhook_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edOPhook_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edOPhook_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edOPhook_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edNegHook_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edNegHook_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edNegHook_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edNegHook_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edFlat_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edFlat_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edFlat_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edFlat_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edNegLinear_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edNegLinear_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edNegLinear_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edNegLinear_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edPosHook_1EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edPosHook_1EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+edPosHook_2EH:
+  type: matrix
+  label: How desirable is this characteristic?
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
+  row:
+    NA: ''
+edPosHook_2EH_:
+  type: mc
+  label: []
+  options:
+    Extremely Undesirable: '1'
+    Strongly Undesirable: '2'
+    Moderately Undesirable: '3'
+    Mildly Undesirable: '4'
+    Neutral: '5'
+    Mildly Desirable: '6'
+    Moderately Desirable: '7'
+    Strongly Desirable: '8'
+    Extremely Desirable: '9'
 
