@@ -2972,6 +2972,10 @@ This completes the first rating procedure -- next we would like you to rate the 
 
 Please notify the experimenter (across the room from you) that you are ready for the next portion of the experiment!
 
+```{r}
+sd_next()
+```
+
 :::
 
 
@@ -2985,7 +2989,16 @@ For this half of the survey, we want you to rate **how desirable** is it to be f
 
 Below we provide some examples of how we would like you to think and respond to “how desirable” it would be for a person to be characterized by different statements. 
 
-FILL IN EXAMPLES LIKE K&T HERE
+---
+
+Rate each personality characteristic on how desirable it is in others. 
+You may want to think about the behavior of people who have this trait and then rate the desirability.
+
+![](edwardsrating.JPG)
+
+```{r}
+sd_next()
+```
 
 :::
 
@@ -3120,7 +3133,14 @@ sd_next()
 
 
 
-
+<style>
+.sd-matrix .radio-inline label,
+.sd-matrix .checkbox-inline label,
+.form-group .radio label,
+.form-group .checkbox label {
+  font-size: 0.85em !important;
+}
+</style>
 
 
 ::: {#edPositiveLinear1 .sd-page}

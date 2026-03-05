@@ -130,6 +130,10 @@ If survey items is obviously desirable, people will endorse, if the item is obvi
 
 We're relying on experimenters to help out & provide feedback as the experiment progresses...
 
+# Let's check it out!!
+
+[![](takesurvey.JPG)](https://jtkulas.shinyapps.io/responselatencies/)
+
 ## Cited References
 
 
