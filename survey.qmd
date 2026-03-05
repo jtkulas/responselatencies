@@ -200,7 +200,7 @@ NegHook <- Merged %>%
 
 You will be asked to rate how desirable the content of 15 personality items is using [two different rating procedures]{.underline}. 
 
-We do NOT want you to provide ratings of your own personality -- rather, we are interested in your opinion regarding the extent to which each item **should be considered [desirable]{.underline} within the context of our American society**. 
+We do NOT want you to provide ratings of your own personality -- rather, we are interested in your opinion regarding the extent to which each item **should be considered [desirable]{.underline} within the context of our United States culture**. 
 
 The extent to which personality items reflect desirable content has been of interest to personality researchers for many years. Currently, researchers collect this type of information using two different procedures, and we are curious to know if the procedures yield similar or dissimilar results. 
 
@@ -218,7 +218,7 @@ sd_next() ## either #kuncel or #edwards here - need to randomize
 
 ::: {#kuncel .sd-page}
 
-For this half of the survey, we want you to rate **how desirable** is it to be for someone to be, in our culture,
+For this half of the survey, we want you to rate **how desirable** is it to be for someone to be, in our United States culture,
 
 + extremely high (**top 1%** of all people)... 
 + above average (**top 30%** of all people)...
@@ -232,13 +232,13 @@ Below we provide some examples of how we would like you to think and respond to 
 
 ## **top 1%**:
 
-This means that very, very few people are “higher” than the person along the characteristic. 
+This means that very, very few people are more pessimistic than the person. 
 
 ![](top1.PNG)
 
 ## **top 30%**:
 
-This means that about a third of people are “higher” than the person along the characteristic. 
+This means that about a third of people are more comfortable than the person. 
 
 ![](top30.PNG)
 
@@ -250,7 +250,7 @@ This means that the person is perfectly “in the middle” along the characteri
 
 ## **bottom 30%**:
 
-This means that about a third of people are “lower” than the person along the characteristic. 
+This means that about a third of people talk less than the person. 
 
 ![](bottom30.PNG)
 
@@ -260,7 +260,7 @@ This means that very, very few people are “lower” than the person along the 
 
 ![](bottom1.PNG)
 
-We will be recording *how long it takes for you to respond*, so please respond as quickly but accurately as possible. The next few pages will be *practice* exercises to let you become familiar with the rating procedure -- we will let you know when the practice ends and the actual data collection begins. 
+We will be recording ***how long it takes for you to respond***, so please respond as quickly but accurately as possible. The next few pages will be *practice* exercises to let you become familiar with the rating procedure -- we will let you know when the practice ends and the actual data collection begins. 
 
 Please hit the `Next` button when you are ready for your first practice item.
 
@@ -449,7 +449,7 @@ sd_next()
 
 The SECOND PRACTICE item that you will be asked to provide ratings for is:  
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 When ready, please hit the `Next` button and you will begin the next sequence of ratings. 
 
@@ -461,7 +461,7 @@ sd_next()
 
 ::: {#kunpractice2 .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 sd_question(
@@ -488,7 +488,7 @@ sd_next()
 
 ::: {#kunpractice2a .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 sd_question(
@@ -515,7 +515,7 @@ sd_next()
 
 ::: {#kunpractice2b .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 sd_question(
@@ -543,7 +543,7 @@ sd_next()
 
 ::: {#kunpractice2c .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 sd_question(
@@ -571,7 +571,7 @@ sd_next()
 
 ::: {#kunpractice2d .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 sd_question(
@@ -2970,7 +2970,7 @@ Thank you for your responses!
 
 This completes the first rating procedure -- next we would like you to rate the same 15 items using a different rating procedure. 
 
-Please notify the experimenter (across the room from you) that you are ready for the next portion of the experiment!
+Please notify the experimenter (across the room from you -- 478B) that you are ready for the next portion of the experiment!
 
 ```{r}
 sd_next()
@@ -2985,7 +2985,7 @@ sd_next()
 
 ::: {#edwards .sd-page}
 
-For this half of the survey, we want you to rate **how desirable** is it to be for someone to be, in our culture, across a number of different characteristics.
+For this half of the survey, we want you to rate **how desirable** is it to be for someone to be, in our United States culture, across a number of different characteristics.
 
 Below we provide some examples of how we would like you to think and respond to “how desirable” it would be for a person to be characterized by different statements. 
 
@@ -3070,7 +3070,7 @@ sd_next()
 
 The SECOND PRACTICE item that you will be asked to provide ratings for is: 
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 Please hit the `Next` button when you are ready to begin the rating.
 
@@ -3084,7 +3084,7 @@ sd_next()
 
 ::: {#edpractice2 .sd-page}
 
-## **Postpone decisions.**
+## **Easily awakened by noise**
 
 ```{r}
 # https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
