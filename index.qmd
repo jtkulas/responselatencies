@@ -57,7 +57,7 @@ One solution is to solicit ratings from OTHERs, but these OTHERs may actually be
 
 ## What we [DO]{.underline} know...
 
-If survey items is obviously desirable, people will endorse, if the item is obviously undesirable, people will deny:
+If a survey item is obviously desirable, people will endorse, if the item is obviously [undesirable]{.underline}, people will deny:
 
 ::: {.columns}
 
@@ -115,14 +115,14 @@ If survey items is obviously desirable, people will endorse, if the item is obvi
 
 + What are the similarities and differences between these two rating approaches?
 
-  + How reliable are the ratings provided from both procedures?
-  + How accurate are the ratings provided from both procedures?
+  + How [reliable]{.underline} are the ratings provided from both procedures?
+  + How [accurate]{.underline} are the ratings provided from both procedures?
 
-+ The new one "seems" more cognitively difficult, but as Psychologists, we should investigate
++ The new one "**seems**" more cognitively difficult, but as Psychologists, we should investigate
 
 ## Issues
 
-+ Very unusual request -- asking individuals to [rate the item's level of desirability]{.underline} (rather than their own personality)
++ Asking individuals to [rate the item's level of desirability]{.underline} (rather than their own personality) is a very unusual request
 
 + Response latency as a DV -- imperfect but of interest
 
