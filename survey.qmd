@@ -3036,24 +3036,27 @@ sd_next()
 
 ## **Readily overcome setbacks.**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 # https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
 
 sd_question(
   type  = 'matrix',
   id    = 'edprac1_EH',
-  label = "How desirable is this characteristic?",
+  label = " ",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3086,24 +3089,27 @@ sd_next()
 
 ## **Easily awakened by noise**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 # https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
 
 sd_question(
   type  = 'matrix',
   id    = 'edprac2_EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3161,24 +3167,27 @@ sd_next()
 
 ## **`r PSitem1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(PSitem1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edposlinear_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3211,23 +3220,26 @@ sd_next()
 
 ## **`r PSitem2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 
 sd_question(
   type  = 'matrix',
   id    = 'edposlinear_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3260,23 +3272,26 @@ sd_next()
 
 ## **`r Witem1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 
 sd_question(
   type  = 'matrix',
   id    = 'edwitch_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3310,24 +3325,27 @@ sd_next()
 
 ## **`r Witem2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(Witem2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edwitch_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3360,24 +3378,27 @@ sd_next()
 
 ## **`r OPhook1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(OPhook1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edOPhook_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3410,24 +3431,27 @@ sd_next()
 
 ## **`r OPhook2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(OPhook2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edOPhook_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3460,24 +3484,27 @@ sd_next()
 
 ## **`r NegHook1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(NegHook1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edNegHook_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3510,24 +3537,27 @@ sd_next()
 
 ## **`r NegHook2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(NegHook2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edNegHook_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3560,24 +3590,27 @@ sd_next()
 
 ## **`r Flat1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(Flat1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edFlat_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3609,24 +3642,27 @@ sd_next()
 
 ## **`r Flat2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(Flat2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edFlat_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3658,24 +3694,27 @@ sd_next()
 
 ## **`r NegLinear1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(NegLinear1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edNegLinear_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3708,24 +3747,27 @@ sd_next()
 
 ## **`r NegLinear2$Text`**
 
+How desirable is this characteristic? 
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(NegLinear2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edNegLinear_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3758,24 +3800,27 @@ sd_next()
 
 ## **`r PosHook1$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(PosHook1$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edPosHook_1EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
@@ -3808,24 +3853,27 @@ sd_next()
 
 ## **`r PosHook2$Text`**
 
+How desirable is this characteristic?
+
+![](desire.JPG)
 ```{r}
 ## cat(paste(PosHook2$Text))
 
 sd_question(
   type  = 'matrix',
   id    = 'edPosHook_2EH',
-  label = "How desirable is this characteristic?",
+  label = " ",#  label = "How desirable is this characteristic?",
   row="",
   option = c(
-    'Extremely Undesirable'    = '1',
-    'Strongly Undesirable'     = '2',
-    'Moderately Undesirable'   = '3',
-    'Mildly Undesirable'       = '4',
+    'Extremely'    = '1',
+    'Strongly'     = '2',
+    'Moderately'   = '3',
+    'Mildly'       = '4',
     'Neutral'                  = '5',
-    'Mildly Desirable'         = '6',
-    'Moderately Desirable'     = '7',
-    'Strongly Desirable'       = '8',
-    'Extremely Desirable'      = '9'
+    'Mildly'         = '6',
+    'Moderately'     = '7',
+    'Strongly'       = '8',
+    'Extremely'      = '9'
   ))
 
 ```
