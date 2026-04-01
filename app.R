@@ -1,33 +1,42 @@
 library(surveydown)
 library(shiny)
 library(DBI)
-library(RPostgres)
 
-db <- sd_db_connect(ignore = TRUE)
+db <- sd_db_connect(ignore = TRUE)  # Ignore database for testing
 
 server <- function(input, output, session) {
-  sd_skip_if()
+  sd_skip_forward()
   sd_show_if()
   
-  # INTERCEPT AND HANDLE LATENCY EVENTS BEFORE sd_server()
+  # Create a reactive data frame to store latency events
+  latency_data <- reactiveVal(data.frame(
+    questionId = character(),
+    responseValue = character(),
+    latency_ms = character(),  # Store as string/text to preserve milliseconds
+    timestamp = character(),
+    stringsAsFactors = FALSE
+  ))
+  
+  # Capture latency events BEFORE surveydown processes them
   observeEvent(input$latency_event, {
-    latency_data <- input$latency_event
+    event <- input$latency_event
     
-    # Store milliseconds as-is (don't let surveydown convert it)
-    # Add to your data storage with the raw millisecond value
-    cat("Question ID:", latency_data$questionId, 
-        "Response:", latency_data$responseValue,
-        "Latency (ms):", latency_data$latency, "\n")
+    # Append to latency data
+    current_data <- latency_data()
+    new_row <- data.frame(
+      questionId = event$questionId,
+      responseValue = event$responseValue,
+      latency_ms = as.character(event$latency),  # Convert to string to preserve milliseconds
+      timestamp = as.character(Sys.time()),
+      stringsAsFactors = FALSE
+    )
+    latency_data(rbind(current_data, new_row))
     
-    # If using custom database storage, save here with latency in milliseconds
-    # Example: 
-    # save_latency_to_db(
-    #   question_id = latency_data$questionId,
-    #   response_value = latency_data$responseValue,
-    #   latency_ms = latency_data$latency  # Keep as milliseconds!
-    # )
+    # Optional: Print to console for debugging
+    cat("Latency captured (ms):", event$latency, "\n")
   })
   
+  # Call surveydown server
   sd_server(db = db, use_cookies = FALSE)
 }
 
