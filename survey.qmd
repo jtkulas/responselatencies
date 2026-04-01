@@ -293,15 +293,6 @@ sd_next("kunpractice1")
 
 ::: {#kunpractice1 .sd-page}
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let neutralOption = document.querySelector('input[value="Neutral"]');
-    if (neutralOption) {
-      neutralOption.checked = true; // Pre-select Neutral
-    }
-  });
-</script>
-
 ## **Readily overcome setbacks.**
 
 ```{r}
@@ -846,14 +837,6 @@ sd_next()
 
 ::: {#edpractice1 .sd-page}
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    let neutralOption = document.querySelector('input[value="Neutral"]');
-    if (neutralOption) {
-      neutralOption.checked = true; // Pre-select Neutral
-    }
-  });
-</script>
 
 ## **Readily overcome setbacks.**
 
