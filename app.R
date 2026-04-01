@@ -2,41 +2,38 @@ library(surveydown)
 library(shiny)
 library(DBI)
 
-db <- sd_db_connect(ignore = TRUE)  # Ignore database for testing
+db <- sd_db_connect()  # Ignore database for testing
 
 server <- function(input, output, session) {
-  sd_skip_forward()
-  sd_show_if()
-  
-  # Create a reactive data frame to store latency events
-  latency_data <- reactiveVal(data.frame(
-    questionId = character(),
-    responseValue = character(),
-    latency_ms = character(),  # Store as string/text to preserve milliseconds
-    timestamp = character(),
-    stringsAsFactors = FALSE
-  ))
-  
-  # Capture latency events BEFORE surveydown processes them
+  # Capture latency events
   observeEvent(input$latency_event, {
     event <- input$latency_event
     
-    # Append to latency data
-    current_data <- latency_data()
-    new_row <- data.frame(
-      questionId = event$questionId,
-      responseValue = event$responseValue,
-      latency_ms = as.character(event$latency),  # Convert to string to preserve milliseconds
-      timestamp = as.character(Sys.time()),
+    cat("📊 Latency event received:\n")
+    cat("  Question:", event$questionId, "\n")
+    cat("  Response:", event$responseValue, "\n")
+    cat("  Latency (ms):", event$latency, "\n\n")
+    
+    # Prepare data for database
+    latency_row <- data.frame(
+      session_id = session$token,
+      question_id = event$questionId,
+      response_value = event$responseValue,
+      latency_ms = as.numeric(event$latency),
       stringsAsFactors = FALSE
     )
-    latency_data(rbind(current_data, new_row))
     
-    # Optional: Print to console for debugging
-    cat("Latency captured (ms):", event$latency, "\n")
+    # Insert into Supabase
+    tryCatch({
+      dbAppendTable(db, "latency_events", latency_row)
+      cat("✓ Saved to latency_events table\n\n")
+    }, error = function(e) {
+      cat("✗ Error saving to database:", e$message, "\n\n")
+    })
   })
   
-  # Call surveydown server
+  sd_skip_forward()
+  sd_show_if()
   sd_server(db = db, use_cookies = FALSE)
 }
 
