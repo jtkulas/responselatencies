@@ -1,11 +1,42 @@
 ---
-# Survey File Content with Neutral Pre-Selection Removed
 
-## Kunpractice1
+<script>
+window.latencyTracker = {
+  timers: {},
+  init: function(questionId) {
+    this.timers[questionId] = Date.now();
+  },
+  record: function(questionId, responseValue) {
+    if (!this.timers[questionId]) this.init(questionId);
+    var latency = Date.now() - this.timers[questionId];
+    
+    // Log to console for debugging
+    console.log('Latency Event - QuestionId:', questionId, 'Latency (ms):', latency, 'Response:', responseValue);
+    
+    Shiny.setInputValue('latency_event', {
+      questionId: questionId,
+      responseValue: responseValue,
+      latency: parseInt(latency)  // Ensure it's an integer in milliseconds
+    }, {priority: 'event'});
+  }
+};
 
-## Edpractice1
+function attachListeners() {
+  document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
+    var id = radio.getAttribute('id');
+    if (!id) return;
+    var questionId = id.match(/^([a-zA-Z0-9_]+)/)[1];
+    window.latencyTracker.init(questionId);
+    radio.onclick = function() {
+      console.log('Radio button clicked for question:', questionId);
+      window.latencyTracker.record(questionId, radio.value);
+    };
+  });
+}
 
-## **Readily overcome setbacks.**
+document.addEventListener('DOMContentLoaded', attachListeners);
+(new MutationObserver(attachListeners)).observe(document.body, {childList: true, subtree: true});
+</script>
 
 ```{r}
 # https://x.com/i/grok/share/1DcUBUJovlpHmIbykgnGC6uGO
