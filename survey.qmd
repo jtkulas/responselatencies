@@ -6,7 +6,8 @@ theme: [night, weekly.scss]
 
 ```{r}
 library(shiny)
-tags$script(HTML("
+tags$script(HTML(
+"
 function attachLatencyListeners() {
   document.querySelectorAll('input[type=\"radio\"]').forEach(function(radio){
     var name = radio.getAttribute('name');
@@ -33,7 +34,8 @@ document.addEventListener('DOMContentLoaded', function(){
   setTimeout(attachLatencyListeners, 250);
 });
 (new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
-"))
+"
+))
 ```
 
 ```{r}
