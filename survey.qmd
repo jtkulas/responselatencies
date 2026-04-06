@@ -4,49 +4,40 @@ warning: false
 theme: [night, weekly.scss]
 ---
 
-<script>
+```{r}
+library(shiny)
+tags$script(HTML("
 function attachLatencyListeners() {
-  // Remove existing listeners to avoid stacking
-  document.querySelectorAll('input[type="radio"]').forEach(function(radio){
-    const new_radio = radio.cloneNode(true);
-    radio.parentNode.replaceChild(new_radio, radio);
-
-    var name = new_radio.getAttribute('name');
+  document.querySelectorAll('input[type=\"radio\"]').forEach(function(radio){
+    var name = radio.getAttribute('name');
     if (!name) return;
     var questionId = name;
-
-    // Start time stamp
     if (!window.latencyTimers) window.latencyTimers = {};
-    new_radio.addEventListener('mousedown', function() {
+    radio.addEventListener('mousedown', function() {
       window.latencyTimers[questionId] = Date.now();
     });
-
-    new_radio.addEventListener('click', function() {
+    radio.addEventListener('click', function() {
       var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
-      // Send to Shiny
       if (window.Shiny) {
         window.Shiny.setInputValue('latency_event', {
           questionId: questionId,
-          responseValue: new_radio.value,
+          responseValue: radio.value,
           latency: latency
         }, {priority: 'event'});
       }
-      // For debugging:
-      console.log("📊 Recording latency:", {questionId, responseValue: new_radio.value, latency});
+      console.log('📊 Recording latency:', {questionId, responseValue: radio.value, latency});
     });
   });
 }
-
-// Attach on load and every time DOM changes (new question/page)
 document.addEventListener('DOMContentLoaded', function(){
   setTimeout(attachLatencyListeners, 250);
 });
 (new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
-</script>
+"))
+```
 
 ```{r}
 library(surveydown)      
-library(shiny)
 
 tags$style(HTML("
   body {
