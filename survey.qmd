@@ -5,43 +5,43 @@ theme: [night, weekly.scss]
 ---
 
 <script>
-console.log("✓ Latency tracker script loaded");
+function attachLatencyListeners() {
+  // Remove existing listeners to avoid stacking
+  document.querySelectorAll('input[type="radio"]').forEach(function(radio){
+    const new_radio = radio.cloneNode(true);
+    radio.parentNode.replaceChild(new_radio, radio);
 
-window.latencyTracker = {
-  timers: {},
-  init: function(questionId) {
-    this.timers[questionId] = Date.now();
-    console.log("✓ Timer initialized for:", questionId);
-  },
-  record: function(questionId, responseValue) {
-    if (!this.timers[questionId]) this.init(questionId);
-    var latency = Date.now() - this.timers[questionId];
-    console.log("📊 Recording latency:", {questionId, responseValue, latency});
-    
-    Shiny.setInputValue('latency_event', {
-      questionId: questionId,
-      responseValue: responseValue,
-      latency: latency
-    }, {priority: 'event'});
-  }
-};
+    var name = new_radio.getAttribute('name');
+    if (!name) return;
+    var questionId = name;
 
-function attachListeners() {
-  document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
-    var id = radio.getAttribute('id');
-    if (!id) return;
-    var questionId = id.match(/^([a-zA-Z0-9_]+)/)[1];
-    window.latencyTracker.init(questionId);
-    radio.onclick = function() {
-      window.latencyTracker.record(questionId, radio.value);
-    };
+    // Start time stamp
+    if (!window.latencyTimers) window.latencyTimers = {};
+    new_radio.addEventListener('mousedown', function() {
+      window.latencyTimers[questionId] = Date.now();
+    });
+
+    new_radio.addEventListener('click', function() {
+      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
+      // Send to Shiny
+      if (window.Shiny) {
+        window.Shiny.setInputValue('latency_event', {
+          questionId: questionId,
+          responseValue: new_radio.value,
+          latency: latency
+        }, {priority: 'event'});
+      }
+      // For debugging:
+      console.log("📊 Recording latency:", {questionId, responseValue: new_radio.value, latency});
+    });
   });
 }
 
-document.addEventListener('DOMContentLoaded', attachListeners);
-(new MutationObserver(attachListeners)).observe(document.body, {childList: true, subtree: true});
-
-console.log("✓ Event listeners attached");
+// Attach on load and every time DOM changes (new question/page)
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(attachLatencyListeners, 250);
+});
+(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
 </script>
 
 ```{r}

@@ -3206,43 +3206,43 @@ box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
 
 
 <script>
-console.log("✓ Latency tracker script loaded");
+function attachLatencyListeners() {
+  // Remove existing listeners to avoid stacking
+  document.querySelectorAll('input[type="radio"]').forEach(function(radio){
+    const new_radio = radio.cloneNode(true);
+    radio.parentNode.replaceChild(new_radio, radio);
 
-window.latencyTracker = {
-  timers: {},
-  init: function(questionId) {
-    this.timers[questionId] = Date.now();
-    console.log("✓ Timer initialized for:", questionId);
-  },
-  record: function(questionId, responseValue) {
-    if (!this.timers[questionId]) this.init(questionId);
-    var latency = Date.now() - this.timers[questionId];
-    console.log("📊 Recording latency:", {questionId, responseValue, latency});
-    
-    Shiny.setInputValue('latency_event', {
-      questionId: questionId,
-      responseValue: responseValue,
-      latency: latency
-    }, {priority: 'event'});
-  }
-};
+    var name = new_radio.getAttribute('name');
+    if (!name) return;
+    var questionId = name;
 
-function attachListeners() {
-  document.querySelectorAll('input[type="radio"]').forEach(function(radio) {
-    var id = radio.getAttribute('id');
-    if (!id) return;
-    var questionId = id.match(/^([a-zA-Z0-9_]+)/)[1];
-    window.latencyTracker.init(questionId);
-    radio.onclick = function() {
-      window.latencyTracker.record(questionId, radio.value);
-    };
+    // Start time stamp
+    if (!window.latencyTimers) window.latencyTimers = {};
+    new_radio.addEventListener('mousedown', function() {
+      window.latencyTimers[questionId] = Date.now();
+    });
+
+    new_radio.addEventListener('click', function() {
+      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
+      // Send to Shiny
+      if (window.Shiny) {
+        window.Shiny.setInputValue('latency_event', {
+          questionId: questionId,
+          responseValue: new_radio.value,
+          latency: latency
+        }, {priority: 'event'});
+      }
+      // For debugging:
+      console.log("📊 Recording latency:", {questionId, responseValue: new_radio.value, latency});
+    });
   });
 }
 
-document.addEventListener('DOMContentLoaded', attachListeners);
-(new MutationObserver(attachListeners)).observe(document.body, {childList: true, subtree: true});
-
-console.log("✓ Event listeners attached");
+// Attach on load and every time DOM changes (new question/page)
+document.addEventListener('DOMContentLoaded', function(){
+  setTimeout(attachLatencyListeners, 250);
+});
+(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
 </script>
 <div class="cell">
 <div class="cell-output-display">
@@ -4138,8 +4138,8 @@ font-size: 16px;
 </div>
 <div id="PositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="try-not-to-think-about-the-needy." class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy."><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy." class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy."><strong>Act wild and crazy.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -4151,8 +4151,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1a" class="sd-page">
-<section id="try-not-to-think-about-the-needy.-1" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-1"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-1" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-1"><strong>Act wild and crazy.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EH" data-question-id="poslinear_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4225,8 +4225,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1b" class="sd-page">
-<section id="try-not-to-think-about-the-needy.-2" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-2"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-2" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-2"><strong>Act wild and crazy.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1AA" data-question-id="poslinear_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4299,8 +4299,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1c" class="sd-page">
-<section id="try-not-to-think-about-the-needy.-3" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-3"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-3" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-3"><strong>Act wild and crazy.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1A" data-question-id="poslinear_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4373,8 +4373,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1d" class="sd-page">
-<section id="try-not-to-think-about-the-needy.-4" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-4"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-4" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-4"><strong>Act wild and crazy.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1BA" data-question-id="poslinear_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4447,8 +4447,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1e" class="sd-page">
-<section id="try-not-to-think-about-the-needy.-5" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-5"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-5" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-5"><strong>Act wild and crazy.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EL" data-question-id="poslinear_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4797,8 +4797,8 @@ font-size: 0.85em !important;
 </style>
 <div id="edPositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="try-not-to-think-about-the-needy.-6" class="level2">
-<h2 class="anchored" data-anchor-id="try-not-to-think-about-the-needy.-6"><strong>Try not to think about the needy.</strong></h2>
+<section id="act-wild-and-crazy.-6" class="level2">
+<h2 class="anchored" data-anchor-id="act-wild-and-crazy.-6"><strong>Act wild and crazy.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
