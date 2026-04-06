@@ -4,6 +4,42 @@ library(DBI)
 
 db <- sd_db_connect()  # Ignore database for testing
 
+ui <- tagList(
+  tags$head(
+    tags$script(HTML(
+      '
+function attachLatencyListeners() {
+  document.querySelectorAll("input[type=\\"radio\\"]").forEach(function(radio){
+    var name = radio.getAttribute("name");
+    if(!name)return;
+    var questionId = name;
+    if(!window.latencyTimers) window.latencyTimers = {};
+    radio.addEventListener("mousedown",function(){
+      window.latencyTimers[questionId] = Date.now();
+    });
+    radio.addEventListener("click",function(){
+      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
+      if(window.Shiny){
+        window.Shiny.setInputValue("latency_event",{
+          questionId:questionId,
+          responseValue:radio.value,
+          latency:latency
+        },{priority:"event"});
+      }
+      console.log("📊 Recording latency:",{questionId,responseValue:radio.value,latency});
+    });
+  });
+}
+document.addEventListener("DOMContentLoaded", function(){
+  setTimeout(attachLatencyListeners, 250);
+});
+(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true });
+'
+    ))
+  ),
+  sd_ui()
+)
+
 server <- function(input, output, session) {
   # Capture latency events
   observeEvent(input$latency_event, {
@@ -37,4 +73,4 @@ server <- function(input, output, session) {
   sd_server(db = db, use_cookies = FALSE)
 }
 
-shiny::shinyApp(ui = sd_ui(), server = server)
+shiny::shinyApp(ui = ui, server = server)

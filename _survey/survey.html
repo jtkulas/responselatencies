@@ -3207,38 +3207,6 @@ box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
 
 <div class="cell">
 <div class="cell-output-display">
-<script>
-function attachLatencyListeners() {
-  document.querySelectorAll('input[type="radio"]').forEach(function(radio){
-    var name = radio.getAttribute('name');
-    if (!name) return;
-    var questionId = name;
-    if (!window.latencyTimers) window.latencyTimers = {};
-    radio.addEventListener('mousedown', function() {
-      window.latencyTimers[questionId] = Date.now();
-    });
-    radio.addEventListener('click', function() {
-      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
-      if (window.Shiny) {
-        window.Shiny.setInputValue('latency_event', {
-          questionId: questionId,
-          responseValue: radio.value,
-          latency: latency
-        }, {priority: 'event'});
-      }
-      console.log('📊 Recording latency:', {questionId, responseValue: radio.value, latency});
-    });
-  });
-}
-document.addEventListener('DOMContentLoaded', function(){
-  setTimeout(attachLatencyListeners, 250);
-});
-(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
-</script>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
 <style>
 body {
 font-size: 18px;
@@ -3248,27 +3216,6 @@ font-size: 24px;
 }
 .sd-page {
 font-size: 18px;
-}
-.shiny-input-container select {
-font-size: 16px;
-}
-.shiny-input-container input[type='text'] {
-font-size: 16px;
-}
-</style>
-</div>
-</div>
-<div class="cell">
-<div class="cell-output-display">
-<style>
-body {
-font-size: 18px; 
-}
-h1, h2, h3, h4, h5, h6 {
-font-size: 24px; 
-}
-.sd-page {
-font-size: 18px; 
 }
 .shiny-input-container select {
 font-size: 16px;
@@ -4131,8 +4078,8 @@ font-size: 16px;
 </div>
 <div id="PositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="get-back-at-others." class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others."><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily." class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily."><strong>Get angry easily.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -4144,8 +4091,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1a" class="sd-page">
-<section id="get-back-at-others.-1" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-1"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-1" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-1"><strong>Get angry easily.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EH" data-question-id="poslinear_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4218,8 +4165,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1b" class="sd-page">
-<section id="get-back-at-others.-2" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-2"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-2" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-2"><strong>Get angry easily.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1AA" data-question-id="poslinear_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4292,8 +4239,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1c" class="sd-page">
-<section id="get-back-at-others.-3" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-3"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-3" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-3"><strong>Get angry easily.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1A" data-question-id="poslinear_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4366,8 +4313,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1d" class="sd-page">
-<section id="get-back-at-others.-4" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-4"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-4" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-4"><strong>Get angry easily.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1BA" data-question-id="poslinear_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4440,8 +4387,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1e" class="sd-page">
-<section id="get-back-at-others.-5" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-5"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-5" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-5"><strong>Get angry easily.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EL" data-question-id="poslinear_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4790,8 +4737,8 @@ font-size: 0.85em !important;
 </style>
 <div id="edPositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="get-back-at-others.-6" class="level2">
-<h2 class="anchored" data-anchor-id="get-back-at-others.-6"><strong>Get back at others.</strong></h2>
+<section id="get-angry-easily.-6" class="level2">
+<h2 class="anchored" data-anchor-id="get-angry-easily.-6"><strong>Get angry easily.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">

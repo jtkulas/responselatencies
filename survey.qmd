@@ -5,41 +5,8 @@ theme: [night, weekly.scss]
 ---
 
 ```{r}
+library(surveydown)
 library(shiny)
-tags$script(HTML(
-"
-function attachLatencyListeners() {
-  document.querySelectorAll('input[type=\"radio\"]').forEach(function(radio){
-    var name = radio.getAttribute('name');
-    if (!name) return;
-    var questionId = name;
-    if (!window.latencyTimers) window.latencyTimers = {};
-    radio.addEventListener('mousedown', function() {
-      window.latencyTimers[questionId] = Date.now();
-    });
-    radio.addEventListener('click', function() {
-      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
-      if (window.Shiny) {
-        window.Shiny.setInputValue('latency_event', {
-          questionId: questionId,
-          responseValue: radio.value,
-          latency: latency
-        }, {priority: 'event'});
-      }
-      console.log('📊 Recording latency:', {questionId, responseValue: radio.value, latency});
-    });
-  });
-}
-document.addEventListener('DOMContentLoaded', function(){
-  setTimeout(attachLatencyListeners, 250);
-});
-(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true});
-"
-))
-```
-
-```{r}
-library(surveydown)      
 
 tags$style(HTML("
   body {
@@ -101,28 +68,8 @@ NegHook <- Merged %>%
   filter(category == "NEhook" | category == "Nhook")
 ```
 
-```{r}
-library(surveydown)      ## standard css specs not rendering as expected
-library(shiny)
 
-tags$style(HTML("
-  body {
-    font-size: 18px; /* Adjust the font size as needed */
-  }
-  h1, h2, h3, h4, h5, h6 {
-    font-size: 24px; /* Adjust heading sizes */
-  }
-  .sd-page {
-    font-size: 18px; /* Target Surveydown page content */
-  }
-  .shiny-input-container select {
-    font-size: 16px;
-  }
-  .shiny-input-container input[type='text'] {
-    font-size: 16px;
-  }
-"))
-```
+
 
 ```{r}
 ## Creating a "second attempt" latency survey using the 11 Study 1 categories (although some categories will be "grouped"): Linear, hooked, non-mono, hooked(n), Linear(n)
