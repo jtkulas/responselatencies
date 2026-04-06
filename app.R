@@ -5,9 +5,10 @@ library(DBI)
 db <- sd_db_connect()  # Ignore database for testing
 
 ui <- tagList(
-  tags$head(
-    tags$script(HTML(
-      '
+  sd_ui(),
+  tags$script(HTML(
+    '
+console.log("[DEBUG] Latency JS running");
 function attachLatencyListeners() {
   document.querySelectorAll("input[type=\\"radio\\"]").forEach(function(radio){
     var name = radio.getAttribute("name");
@@ -16,6 +17,7 @@ function attachLatencyListeners() {
     if(!window.latencyTimers) window.latencyTimers = {};
     radio.addEventListener("mousedown",function(){
       window.latencyTimers[questionId] = Date.now();
+      console.log("[DEBUG] Mouse down for", questionId, window.latencyTimers);
     });
     radio.addEventListener("click",function(){
       var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
@@ -35,42 +37,15 @@ document.addEventListener("DOMContentLoaded", function(){
 });
 (new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true });
 '
-    ))
-  ),
-  sd_ui()
+  ))
 )
 
 server <- function(input, output, session) {
-  # Capture latency events
   observeEvent(input$latency_event, {
     event <- input$latency_event
-    
-    cat("📊 Latency event received:\n")
-    cat("  Question:", event$questionId, "\n")
-    cat("  Response:", event$responseValue, "\n")
-    cat("  Latency (ms):", event$latency, "\n\n")
-    
-    # Prepare data for database
-    latency_row <- data.frame(
-      session_id = session$token,
-      question_id = event$questionId,
-      response_value = event$responseValue,
-      latency_ms = as.numeric(event$latency),
-      stringsAsFactors = FALSE
-    )
-    
-    # Insert into Supabase
-    tryCatch({
-      dbAppendTable(db, "latency_events", latency_row)
-      cat("✓ Saved to latency_events table\n\n")
-    }, error = function(e) {
-      cat("✗ Error saving to database:", e$message, "\n\n")
-    })
+    print(event)
+    # Your db logic here
   })
-  
-  sd_skip_forward()
-  sd_show_if()
   sd_server(db = db, use_cookies = FALSE)
 }
-
 shiny::shinyApp(ui = ui, server = server)
