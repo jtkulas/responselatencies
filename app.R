@@ -1,51 +1,51 @@
 library(surveydown)
 library(shiny)
 library(DBI)
+library(RPostgres)
+library(pool)
 
-db <- sd_db_connect()  # Ignore database for testing
+# 1. Create pool at global scope
+con <- dbPool(
+  drv      = RPostgres::Postgres(),
+  host     = "aws-1-us-west-1.pooler.supabase.com",
+  port     = 6543,
+  user     = "postgres.bifyyedjqatwyhorqgnf",
+  password = "1kCMfEeR9n8GP82K",
+  dbname   = "postgres",
+  sslmode  = "require"
+)
+
+print("POOL AT CREATION:")
+print(con)
 
 ui <- tagList(
   sd_ui(),
   tags$script(HTML(
     '
-console.log("[DEBUG] Latency JS running");
-function attachLatencyListeners() {
-  document.querySelectorAll("input[type=\\"radio\\"]").forEach(function(radio){
-    var name = radio.getAttribute("name");
-    if(!name)return;
-    var questionId = name;
-    if(!window.latencyTimers) window.latencyTimers = {};
-    radio.addEventListener("mousedown",function(){
-      window.latencyTimers[questionId] = Date.now();
-      console.log("[DEBUG] Mouse down for", questionId, window.latencyTimers);
-    });
-    radio.addEventListener("click",function(){
-      var latency = Date.now() - (window.latencyTimers[questionId] || Date.now());
-      if(window.Shiny){
-        window.Shiny.setInputValue("latency_event",{
-          questionId:questionId,
-          responseValue:radio.value,
-          latency:latency
-        },{priority:"event"});
-      }
-      console.log("📊 Recording latency:",{questionId,responseValue:radio.value,latency});
-    });
-  });
-}
-document.addEventListener("DOMContentLoaded", function(){
-  setTimeout(attachLatencyListeners, 250);
+window.addEventListener("load", function() {
+  console.log("Latency tracker JS loaded");
 });
-(new MutationObserver(function(){ setTimeout(attachLatencyListeners, 250); })).observe(document.body, { childList: true, subtree: true });
 '
   ))
 )
 
 server <- function(input, output, session) {
+  print("POOL IN SERVER FUNCTION:")
+  print(con)
+  
+  # Just a no-op observer for now
   observeEvent(input$latency_event, {
-    event <- input$latency_event
-    print(event)
-    # Your db logic here
+    print(input$latency_event)
   })
-  sd_server(db = db, use_cookies = FALSE)
+  
+  # <<<<<<<<<<<<<<<<
+  print("POOL JUST BEFORE sd_server CALL:")
+  print(con)
+  # <<<<<<<<<<<<<<<<
+  
+  sd_skip_forward()
+  sd_show_if()
+  sd_server(db = con, use_cookies = FALSE)
 }
+
 shiny::shinyApp(ui = ui, server = server)

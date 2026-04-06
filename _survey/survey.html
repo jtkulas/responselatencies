@@ -2255,6 +2255,166 @@ Shiny.addCustomMessageHandler("updateSurveydownConfig", function(message) {
   updateSurveydownConfig(message);
 });
 </script>
+<script>// Initialize ClipboardJS for code copy buttons in dynamically loaded Shiny content
+(function() {
+  'use strict';
+
+  // Check if ClipboardJS is available (loaded from Quarto's head)
+  function initCodeCopy() {
+    if (typeof ClipboardJS === 'undefined') {
+      console.warn('ClipboardJS not available, code copy disabled');
+      return;
+    }
+
+    // Helper to check if element is a code annotation
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {
+          return true;
+        }
+      }
+      return false;
+    };
+
+    // Get text to copy from code block
+    const getTextToCopy = function(trigger) {
+      // Find the code element - it could be a sibling or nested differently
+      let codeEl = null;
+
+      // Try to find the code element within the sourceCode div
+      const sourceCode = trigger.closest('.sourceCode');
+      if (sourceCode) {
+        codeEl = sourceCode.querySelector('code');
+      }
+
+      // Fallback: try previous sibling approach (Quarto's default structure)
+      if (!codeEl) {
+        const prevSibling = trigger.previousElementSibling;
+        if (prevSibling) {
+          codeEl = prevSibling.querySelector('code') || prevSibling;
+        }
+      }
+
+      if (!codeEl) {
+        console.warn('Could not find code element for copy button');
+        return '';
+      }
+
+      // Clone and remove annotations
+      const clonedCode = codeEl.cloneNode(true);
+      for (const childEl of clonedCode.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return clonedCode.innerText;
+    };
+
+    // Success callback
+    const onCopySuccess = function(e) {
+      const button = e.trigger;
+      button.blur();
+      button.classList.add('code-copy-button-checked');
+      const currentTitle = button.getAttribute('title');
+      button.setAttribute('title', 'Copied!');
+
+      // Use Bootstrap tooltip if available
+      let tooltip;
+      if (window.bootstrap && bootstrap.Tooltip) {
+        button.setAttribute('data-bs-toggle', 'tooltip');
+        button.setAttribute('data-bs-placement', 'left');
+        button.setAttribute('data-bs-title', 'Copied!');
+        tooltip = new bootstrap.Tooltip(button, {
+          trigger: 'manual',
+          customClass: 'code-copy-button-tooltip',
+          offset: [0, -8]
+        });
+        tooltip.show();
+      }
+
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute('data-bs-title');
+          button.removeAttribute('data-bs-toggle');
+          button.removeAttribute('data-bs-placement');
+        }
+        button.setAttribute('title', currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+
+      e.clearSelection();
+    };
+
+    // Destroy existing clipboard instances to avoid duplicates
+    const existingClipboards = window._surveydownClipboards || [];
+    existingClipboards.forEach(function(cb) {
+      if (cb && typeof cb.destroy === 'function') {
+        cb.destroy();
+      }
+    });
+    window._surveydownClipboards = [];
+
+    // Initialize ClipboardJS for all code copy buttons
+    const buttons = document.querySelectorAll('.code-copy-button');
+    if (buttons.length > 0) {
+      const clipboard = new ClipboardJS('.code-copy-button', {
+        text: getTextToCopy
+      });
+      clipboard.on('success', onCopySuccess);
+      clipboard.on('error', function(e) {
+        console.error('Copy failed:', e);
+      });
+      window._surveydownClipboards.push(clipboard);
+    }
+  }
+
+  // Initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initCodeCopy);
+  } else {
+    initCodeCopy();
+  }
+
+  // Re-initialize when Shiny updates content
+  $(document).on('shiny:value', function(event) {
+    // Small delay to let DOM update
+    setTimeout(initCodeCopy, 100);
+  });
+
+  // Also use MutationObserver as backup for any DOM changes
+  const observer = new MutationObserver(function(mutations) {
+    // Check if any mutations added code-copy-button elements
+    let needsInit = false;
+    mutations.forEach(function(mutation) {
+      mutation.addedNodes.forEach(function(node) {
+        if (node.nodeType === 1) { // Element node
+          if (node.classList && node.classList.contains('code-copy-button')) {
+            needsInit = true;
+          } else if (node.querySelector && node.querySelector('.code-copy-button')) {
+            needsInit = true;
+          }
+        }
+      });
+    });
+    if (needsInit) {
+      setTimeout(initCodeCopy, 100);
+    }
+  });
+
+  // Start observing when DOM is ready
+  function startObserver() {
+    const targetNode = document.getElementById('quarto-content') || document.body;
+    observer.observe(targetNode, { childList: true, subtree: true });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', startObserver);
+  } else {
+    startObserver();
+  }
+})();
+</script>
 <script>const surveydownCookies = {
     set: function(sessionId) {
         try {
@@ -2264,7 +2424,6 @@ Shiny.addCustomMessageHandler("updateSurveydownConfig", function(message) {
                               ";expires=" + date.toUTCString() +
                               ";path=/;SameSite=Strict";
             document.cookie = cookieValue;
-            console.log("Session cookie set successfully:", cookieValue);
         } catch (e) {
             console.error("Error setting session cookie:", e);
         }
@@ -2295,16 +2454,28 @@ Shiny.addCustomMessageHandler("updateSurveydownConfig", function(message) {
         try {
             // Only store current page data instead of accumulating
             let currentData = {};
-            currentData[pageId] = pageData;  // pageData contains both answers and timestamps
-            
+            currentData[pageId] = {
+                answers: pageData.answers,
+                last_timestamp: pageData.last_timestamp
+            };
+
+            // Store page_history separately at top level (not per-page)
+            if (pageData.page_history) {
+                currentData.page_history = pageData.page_history;
+            }
+
+            // Store question_history separately at top level (not per-page)
+            if (pageData.question_history) {
+                currentData.question_history = pageData.question_history;
+            }
+
             const date = new Date();
             date.setTime(date.getTime() + (30 * 24 * 60 * 60 * 1000));
             const cookieValue = "surveydown_answers=" + JSON.stringify(currentData) +
                               ";expires=" + date.toUTCString() +
                               ";path=/;SameSite=Strict";
             document.cookie = cookieValue;
-            console.log("Answer data set for page:", pageId);
-            
+
             // Update Shiny input
             Shiny.setInputValue('stored_answer_data', currentData, {priority: 'event'});
         } catch (e) {
@@ -2347,19 +2518,38 @@ Shiny.addCustomMessageHandler('setAnswerData', function(message) {
     }
 });
 
+Shiny.addCustomMessageHandler('updatePageHistory', function(message) {
+    if (message.pageId && message.pageData && message.pageData.page_history) {
+        // Get existing cookie data
+        const existingData = surveydownCookies.getAnswerData() || {};
+        const existingPageData = existingData[message.pageId] || {};
+
+        // Merge: preserve existing answers but update page_history and question_history at top level
+        const mergedPageData = {
+            answers: existingPageData.answers || {},
+            last_timestamp: existingPageData.last_timestamp || null,
+            page_history: message.pageData.page_history,  // Will be stored at top level
+            question_history: message.pageData.question_history || []  // Will be stored at top level
+        };
+
+        // Update cookie with merged data
+        surveydownCookies.setAnswerData(message.pageId, mergedPageData);
+    }
+});
+
 // Initialize on document ready
 $(document).ready(function() {
     function initializeSession(retryCount = 0) {
         const sessionId = surveydownCookies.get();
         const answerData = surveydownCookies.getAnswerData();
-        
+
         if (sessionId) {
             Shiny.setInputValue('stored_session_id', sessionId, {priority: 'event'});
         }
         if (answerData) {
             Shiny.setInputValue('stored_answer_data', answerData, {priority: 'event'});
         }
-        
+
         if (!sessionId && retryCount < 3) {
             setTimeout(() => initializeSession(retryCount + 1), 100);
         }
@@ -2372,13 +2562,94 @@ $(document).ready(function() {
 $(document).on('shiny:connected', function(event) {
     const sessionId = surveydownCookies.get();
     const answerData = surveydownCookies.getAnswerData();
-    
+
     if (sessionId) {
         Shiny.setInputValue('stored_session_id', sessionId, {priority: 'event'});
     }
     if (answerData) {
         Shiny.setInputValue('stored_answer_data', answerData, {priority: 'event'});
     }
+});
+
+// Handle restoration of slider inputs (text sliders using sliderTextInput)
+Shiny.addCustomMessageHandler('restoreSliderValue', function(message) {
+    if (!message.id || message.selected === undefined || message.selected === null) return;
+
+    const questionId = message.id;
+    const selected = message.selected;
+
+    // Function to attempt slider update with retries
+    function attemptSliderUpdate(retryCount) {
+        // Find the slider input element
+        const sliderInput = $('#' + questionId);
+        if (sliderInput.length === 0) {
+            if (retryCount < 5) {
+                setTimeout(function() { attemptSliderUpdate(retryCount + 1); }, 100);
+            }
+            return;
+        }
+
+        // Get the ion.rangeSlider instance
+        const sliderData = sliderInput.data('ionRangeSlider');
+        if (sliderData) {
+            // Get the choices from the slider
+            const choices = sliderData.options.values || [];
+
+            // Find the index of the selected value
+            const selectedIndex = choices.indexOf(selected);
+
+            if (selectedIndex >= 0) {
+                // Update the slider position
+                sliderData.update({
+                    from: selectedIndex
+                });
+            }
+        } else if (retryCount < 5) {
+            // Slider not initialized yet, retry
+            setTimeout(function() { attemptSliderUpdate(retryCount + 1); }, 100);
+        }
+    }
+
+    // Start with initial delay then attempt update
+    setTimeout(function() { attemptSliderUpdate(0); }, 150);
+});
+
+// Handle restoration of button-style inputs (mc_buttons and mc_multiple_buttons)
+Shiny.addCustomMessageHandler('restoreButtonValue', function(message) {
+    if (!message.id || !message.value) return;
+
+    const questionId = message.id;
+    const value = message.value;
+    const type = message.type || 'radio';
+
+    setTimeout(function() {
+        if (type === 'radio') {
+            // For mc_buttons (radio button groups)
+            // Find the button with this value and trigger a click
+            const button = $('#' + questionId + ' input[type="radio"][value="' + value + '"]').closest('.btn');
+            if (button.length > 0) {
+                // Manually update the visual state
+                $('#' + questionId + ' .btn').removeClass('active');
+                button.addClass('active');
+                // Ensure the radio input is checked
+                $('#' + questionId + ' input[type="radio"][value="' + value + '"]').prop('checked', true);
+            }
+        } else if (type === 'checkbox') {
+            // For mc_multiple_buttons (checkbox button groups)
+            const values = Array.isArray(value) ? value : [value];
+            // Clear all selections first
+            $('#' + questionId + ' .btn').removeClass('active');
+            $('#' + questionId + ' input[type="checkbox"]').prop('checked', false);
+            // Set each selected value
+            values.forEach(function(val) {
+                const button = $('#' + questionId + ' input[type="checkbox"][value="' + val + '"]').closest('.btn');
+                if (button.length > 0) {
+                    button.addClass('active');
+                    $('#' + questionId + ' input[type="checkbox"][value="' + val + '"]').prop('checked', true);
+                }
+            });
+        }
+    }, 150); // Delay to ensure DOM is ready
 });</script>
 <script>function startCountdown(delay, redirectFunc, countdownId, uniqueId) {
     var countdown = delay;
@@ -2408,28 +2679,6 @@ $(document).on('shiny:connected', function(event) {
 
     observer.observe(document.getElementById(uniqueId));
 }
-</script>
-<script>$(document).on('shiny:sessioninitialized', function() {
-    var isModalOpen = false;
-    $(document).on('shown.bs.modal hidden.bs.modal', function(e) {
-        isModalOpen = e.type === 'shown';
-    });
-
-    $(document).on('keydown', function(event) {
-        if (event.key === 'Enter' && !event.repeat &&
-            !$(event.target).is('textarea, input[type="text"], input[type="number"], select, input[type="date"]')) {
-            event.preventDefault();
-            if (isModalOpen) {
-                var $exitButton = $('.modal.show .modal-footer .btn:contains("Submit and Exit"), .modal.show .modal-footer .btn:contains("Exit")').first();
-                if ($exitButton.length) {
-                    $exitButton.click();
-                }
-            } else {
-                $('.sd-enter-button:visible').first().click();
-            }
-        }
-    });
-});
 </script>
 <script>// Handle highlighting of required questions
 $(document).ready(function() {
@@ -2515,6 +2764,50 @@ $(document).ready(function() {
         }
     });
     
+    // Custom message handler for highlighting validation questions  
+    Shiny.addCustomMessageHandler("highlightValidationQuestions", function(data) {
+        // Clear any existing highlights first
+        clearValidationHighlights();
+        
+        // Debug logging (can be removed in production)
+        console.log("Highlighting validation questions:", data.questions);
+        
+        // Handle different data formats that R might send
+        var questions = [];
+        
+        if (data && data.questions) {
+            if (Array.isArray(data.questions)) {
+                questions = data.questions;
+            } else if (typeof data.questions === 'string') {
+                questions = [data.questions];
+            } else if (typeof data.questions === 'object') {
+                // Handle R list/vector converted to object
+                try {
+                    questions = Object.values(data.questions);
+                } catch (e) {
+                    console.error("Error converting questions object to array:", e);
+                    questions = [];
+                }
+            }
+        }
+        
+        // Ensure all elements are strings
+        questions = questions.filter(function(q) {
+            return q && typeof q === 'string' && q.length > 0;
+        });
+        
+        if (questions && questions.length > 0) {
+            // Highlight each validation failed question in red
+            for (var i = 0; i < questions.length; i++) {
+                var questionId = questions[i];
+                highlightQuestion(questionId, 'validation');
+            }
+            
+            // Scroll to the first highlighted question
+            scrollToFirstHighlighted(questions[0]);
+        }
+    });
+    
     // Custom message handler for clearing highlights
     Shiny.addCustomMessageHandler("clearRequiredHighlights", function(data) {
         clearRequiredHighlights();
@@ -2525,6 +2818,11 @@ $(document).ready(function() {
         clearUnansweredHighlights();
     });
     
+    // Custom message handler for clearing validation highlights
+    Shiny.addCustomMessageHandler("clearValidationHighlights", function(data) {
+        clearValidationHighlights();
+    });
+    
     // Custom message handler for delayed highlighting check
     Shiny.addCustomMessageHandler("delayedHighlightCheck", function(data) {
         setTimeout(function() {
@@ -2532,7 +2830,7 @@ $(document).ready(function() {
             Shiny.setInputValue("delayed_highlight_trigger", Date.now(), {priority: "event"});
         }, data.delay);
     });
-    
+
     // Clear highlights when user starts answering questions
     $(document).on('change input', '.question-container input, .question-container select, .question-container textarea', function() {
         var $this = $(this);
@@ -2541,7 +2839,7 @@ $(document).ready(function() {
         // Always try to remove highlighting from question container first
         var questionContainer = $this.closest('.question-container');
         if (questionContainer.length > 0) {
-            questionContainer.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight');
+            questionContainer.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight validation-question-highlight');
         }
         
         // For radio buttons, also check if this is a matrix subquestion and handle the radio group
@@ -2549,8 +2847,8 @@ $(document).ready(function() {
             // This might be a matrix subquestion - remove highlighting from the radio group too
             var radioGroup = $this.closest('.shiny-input-radiogroup');
             if (radioGroup.length > 0) {
-                radioGroup.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight');
-                radioGroup.find('input[type="radio"]').removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight');
+                radioGroup.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight validation-question-highlight');
+                radioGroup.find('input[type="radio"]').removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray required-question-highlight validation-question-highlight');
             }
         }
     });
@@ -2602,7 +2900,11 @@ function highlightQuestion(questionId, type, color) {
         if (type === 'required') {
             highlightClass = 'required-question-highlight';
             // Priority system: remove any existing unanswered highlighting
-            questionContainer.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray');
+            questionContainer.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray validation-question-highlight');
+        } else if (type === 'validation') {
+            highlightClass = 'validation-question-highlight';
+            // Priority system: remove any existing highlights
+            questionContainer.removeClass('required-question-highlight unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray');
         } else {
             // For unanswered questions, use color-specific class
             // Handle both gray and grey spellings
@@ -2640,7 +2942,11 @@ function highlightMatrixSubquestion(subquestionId, type, color) {
         if (type === 'required') {
             highlightClass = 'required-question-highlight';
             // Priority system: remove any existing unanswered highlighting
-            radioGroup.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray');
+            radioGroup.removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray validation-question-highlight');
+        } else if (type === 'validation') {
+            highlightClass = 'validation-question-highlight';
+            // Priority system: remove any existing highlights
+            radioGroup.removeClass('required-question-highlight unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray');
         } else {
             // For unanswered questions, use color-specific class
             color = color || 'gray';
@@ -2671,6 +2977,11 @@ function clearUnansweredHighlights() {
         .removeClass('unanswered-question-highlight unanswered-question-highlight-orange unanswered-question-highlight-green unanswered-question-highlight-purple unanswered-question-highlight-gray');
 }
 
+// Function to clear all validation question highlights
+function clearValidationHighlights() {
+    $('.validation-question-highlight').removeClass('validation-question-highlight');
+}
+
 // Function to scroll to the first highlighted question
 function scrollToFirstHighlighted(questionId) {
     var questionContainer = $('[data-question-id="' + questionId + '"]');
@@ -2693,6 +3004,56 @@ function scrollToFirstHighlighted(questionId) {
         }, 500);
     }
 }</script>
+<script>// interaction.js
+// Universal interaction tracking for question types with default values
+// (slider, slider_numeric, date, daterange)
+//
+// These types need special handling because they always have values
+// even when not interacted by the user. We use a delayed enable flag
+// to ignore initialization and restoration events.
+
+function initInteractionTracking(questionId, questionType) {
+  var containerId = 'container-' + questionId;
+  var trackingEnabled = false;
+
+  // Enable tracking after a short delay to skip initialization events
+  setTimeout(function() {
+    trackingEnabled = true;
+  }, 500);
+
+  // Track interactions via input/change events on container
+  $('#' + containerId).on('input change', function(e) {
+    if (trackingEnabled) {
+      Shiny.setInputValue(questionId + '_interacted', true, {priority: 'event'});
+    }
+  });
+
+  // Track direct interactions based on question type
+  if (questionType === 'slider' || questionType === 'slider_numeric') {
+    // For sliders, track mousedown/touchstart on .irs elements (ionRangeSlider)
+    $(document).on('mousedown touchstart', '#' + containerId + ' .irs', function(e) {
+      if (trackingEnabled) {
+        Shiny.setInputValue(questionId + '_interacted', true, {priority: 'event'});
+      }
+    });
+
+    // Handle keyboard interaction (arrow keys) for sliders
+    $('#' + questionId).on('keydown', function(e) {
+      if (trackingEnabled && e.keyCode >= 37 && e.keyCode <= 40) {
+        Shiny.setInputValue(questionId + '_interacted', true, {priority: 'event'});
+      }
+    });
+
+  } else if (questionType === 'date' || questionType === 'daterange') {
+    // For date inputs, track mousedown/touchstart on datepicker and input elements
+    $(document).on('mousedown touchstart', '#' + containerId + ' .datepicker, #' + containerId + ' input', function(e) {
+      if (trackingEnabled) {
+        Shiny.setInputValue(questionId + '_interacted', true, {priority: 'event'});
+      }
+    });
+  }
+}
+</script>
 <script>function keepAlive() {
   Shiny.onInputChange('keepAlive', Math.random());
 }
@@ -3098,6 +3459,19 @@ border-color: #dc3545 !important;
 box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
 }
 
+.validation-question-highlight .form-group,
+.validation-question-highlight.form-group {
+border-color: #dc3545 !important;
+background-color: rgba(220, 53, 69, 0.1) !important;
+}
+.validation-question-highlight .form-control {
+border-color: #dc3545 !important;
+}
+.validation-question-highlight .form-control:focus {
+border-color: #dc3545 !important;
+box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
 .unanswered-question-highlight .form-group,
 .unanswered-question-highlight.form-group {
 border-color: #007bff !important;
@@ -3190,6 +3564,104 @@ border-color: #dc3545 !important;
 .required-question-highlight.unanswered-question-highlight-gray .form-control:focus {
 border-color: #dc3545 !important;
 box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25) !important;
+}
+
+.numeric-input-container {
+position: relative;
+display: inline-block;
+width: 100%;
+}
+.numeric-input-with-spinner {
+padding-right: 0 !important;
+}
+.numeric-input-with-spinner::-webkit-outer-spin-button,
+.numeric-input-with-spinner::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.numeric-input-with-spinner[type=number] {
+-moz-appearance: textfield;
+}
+.native-spinner {
+position: absolute;
+right: 2px;
+top: 50%;
+transform: translateY(-50%);
+width: 16px;
+height: calc(100% - 4px);
+display: flex;
+flex-direction: column;
+border: 1px solid #ccc;
+border-radius: 4px;
+background: linear-gradient(to bottom, #f9f9f9 0%, #f0f0f0 100%);
+overflow: hidden;
+}
+.native-spinner-button {
+flex: 1;
+border: none;
+background: transparent;
+cursor: pointer;
+position: relative;
+font-size: 0;
+outline: none;
+}
+.native-spinner-button:hover {
+background: rgba(0,0,0,0.05);
+}
+.native-spinner-button:active {
+background: rgba(0,0,0,0.1);
+}
+.native-spinner-button::before {
+content: '';
+position: absolute;
+left: 50%;
+top: 50%;
+transform: translate(-50%, -50%);
+width: 0;
+height: 0;
+}
+.spinner-up::before {
+border-left: 3px solid transparent;
+border-right: 3px solid transparent;
+border-bottom: 4px solid #666;
+}
+.spinner-down::before {
+border-left: 3px solid transparent;
+border-right: 3px solid transparent;
+border-top: 4px solid #666;
+}
+.native-spinner-button:not(:last-child) {
+border-bottom: 1px solid #ccc;
+}
+
+.sd-nav-container {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-top: 1rem;
+margin-bottom: 0.5rem;
+width: 100%;
+clear: both;
+}
+.sd-nav-button {
+min-width: 100px;
+padding: 0.5rem 1rem;
+font-size: 1rem;
+transition: all 0.3s ease;
+}
+.sd-nav-prev {
+margin-right: auto;
+}
+.sd-nav-next {
+margin-left: auto;
+}
+
+@media screen and (max-width: 767px) {
+.sd-nav-button {
+min-width: 80px;
+padding: 0.4rem 0.8rem;
+font-size: 0.9rem;
+}
 }
 </style>
 
@@ -4078,8 +4550,8 @@ font-size: 16px;
 </div>
 <div id="PositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="get-angry-easily." class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily."><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil." class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil."><strong>Believe that people are essentially evil.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -4091,8 +4563,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1a" class="sd-page">
-<section id="get-angry-easily.-1" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-1"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-1" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-1"><strong>Believe that people are essentially evil.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EH" data-question-id="poslinear_1EH" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EH_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4165,8 +4637,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1b" class="sd-page">
-<section id="get-angry-easily.-2" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-2"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-2" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-2"><strong>Believe that people are essentially evil.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1AA" data-question-id="poslinear_1AA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1AA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4239,8 +4711,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1c" class="sd-page">
-<section id="get-angry-easily.-3" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-3"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-3" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-3"><strong>Believe that people are essentially evil.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1A" data-question-id="poslinear_1A" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1A_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4313,8 +4785,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1d" class="sd-page">
-<section id="get-angry-easily.-4" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-4"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-4" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-4"><strong>Believe that people are essentially evil.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1BA" data-question-id="poslinear_1BA" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1BA_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4387,8 +4859,8 @@ font-size: 16px;
 </section>
 </div>
 <div id="PositiveLinear1e" class="sd-page">
-<section id="get-angry-easily.-5" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-5"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-5" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-5"><strong>Believe that people are essentially evil.</strong></h2>
 <div class="cell">
 <div class="cell-output-display">
 <div id="container-poslinear_1EL" data-question-id="poslinear_1EL" class="question-container" style="width: 100%;" oninput="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});" onclick="Shiny.setInputValue(&#39;poslinear_1EL_interacted&#39;, true, {priority: &#39;event&#39;});">
@@ -4737,8 +5209,8 @@ font-size: 0.85em !important;
 </style>
 <div id="edPositiveLinear1" class="sd-page">
 <p>The item that you will be asked to provide ratings for is:</p>
-<section id="get-angry-easily.-6" class="level2">
-<h2 class="anchored" data-anchor-id="get-angry-easily.-6"><strong>Get angry easily.</strong></h2>
+<section id="believe-that-people-are-essentially-evil.-6" class="level2">
+<h2 class="anchored" data-anchor-id="believe-that-people-are-essentially-evil.-6"><strong>Believe that people are essentially evil.</strong></h2>
 <p>When ready for the next rating, please hit <code>Next</code>:</p>
 <div class="cell">
 <div class="cell-output-display">
@@ -4760,8 +5232,10 @@ font-size: 0.85em !important;
 <p>All of your responses have been recorded – you can retrieve the experimenter and close this window now.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div style="margin-top: 0.5rem; margin-bottom: 0.5rem;">
-<button class="btn btn-default action-button sd-enter-button" id="close-survey-button" onclick="Shiny.setInputValue(&#39;show_exit_modal&#39;, true, {priority: &#39;event&#39;});" style="display: block; margin: auto;" type="button">Exit Survey</button>
+<div style="margin-top: 0.5rem; margin-bottom: 0.5rem; position: relative; min-height: 40px;" class="sd-nav-container">
+<div style="width: 100%; text-align: center;">
+<button class="btn btn-default action-button sd-enter-button sd-nav-button" id="close-survey-button" onclick="Shiny.setInputValue(&#39;show_exit_modal&#39;, true, {priority: &#39;event&#39;});" style="display: inline-block;" type="button">Exit Survey</button>
+</div>
 </div>
 <script>
       Shiny.addCustomMessageHandler('closeWindow', function(message) {
